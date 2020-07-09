@@ -13,7 +13,7 @@ public class Controller {
     @ResponseBody
     @GetMapping("/getUserWithHeader/{id}")
     public User getUserWithHeader(@PathVariable() int id, @RequestHeader("nazwaHeadera") String session){
-        User user = new User(1, "112", "Marek", "markowski");
+        User user = new User().setId(1L).setFirstName("23").setLastName("Test");
         if (id == user.getId()) {
             System.out.println(session);
             return user;
@@ -34,7 +34,7 @@ public class Controller {
     @ResponseBody
     @GetMapping("/getUser/{id}")
     public User getUsers(@PathVariable() int id) {
-        User user = new User(1, "112", "Marek", "markowski");
+        User user = new User().setId(1L).setFirstName("23").setLastName("Test");//1, "112", "Marek", "markowski");
         if (id == user.getId()) {
             return user;
         } else {
