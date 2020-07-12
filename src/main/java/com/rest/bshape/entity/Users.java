@@ -1,12 +1,15 @@
 package com.rest.bshape.entity;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
-@Table(name = "user")
-public class User {
+public class Users {
 
-    private @Id @GeneratedValue Long id;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String firstName;
     private String lastName;
     private Integer age;
@@ -16,14 +19,12 @@ public class User {
     private String password;
     private String email;
 
-    public User() {
-    }
 
     public Long getId() {
         return id;
     }
 
-    public User setId(Long id) {
+    public Users setId(Long id) {
         this.id = id;
         return this;
     }
@@ -32,7 +33,7 @@ public class User {
         return firstName;
     }
 
-    public User setFirstName(String firstName) {
+    public Users setFirstName(String firstName) {
         this.firstName = firstName;
         return this;
     }
@@ -41,7 +42,7 @@ public class User {
         return lastName;
     }
 
-    public User setLastName(String lastName) {
+    public Users setLastName(String lastName) {
         this.lastName = lastName;
         return this;
     }
@@ -50,7 +51,7 @@ public class User {
         return age;
     }
 
-    public User setAge(Integer age) {
+    public Users setAge(Integer age) {
         this.age = age;
         return this;
     }
@@ -59,7 +60,7 @@ public class User {
         return weight;
     }
 
-    public User setWeight(Double weight) {
+    public Users setWeight(Double weight) {
         this.weight = weight;
         return this;
     }
@@ -68,7 +69,7 @@ public class User {
         return height;
     }
 
-    public User setHeight(Double height) {
+    public Users setHeight(Double height) {
         this.height = height;
         return this;
     }
@@ -77,7 +78,7 @@ public class User {
         return sex;
     }
 
-    public User setSex(Integer sex) {
+    public Users setSex(Integer sex) {
         this.sex = sex;
         return this;
     }
@@ -86,7 +87,7 @@ public class User {
         return password;
     }
 
-    public User setPassword(String password) {
+    public Users setPassword(String password) {
         this.password = password;
         return this;
     }
@@ -95,8 +96,23 @@ public class User {
         return email;
     }
 
-    public User setEmail(String email) {
+    public Users setEmail(String email) {
         this.email = email;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", age=" + age +
+                ", weight=" + weight +
+                ", height=" + height +
+                ", sex=" + sex +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }
