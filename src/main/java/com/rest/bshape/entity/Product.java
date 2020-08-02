@@ -3,10 +3,8 @@ package com.rest.bshape.entity;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Setter
@@ -22,4 +20,7 @@ public class Product {
     private Double protein;
     private Double fat;
     private Double carbohydrates;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Meal> meals;
 }

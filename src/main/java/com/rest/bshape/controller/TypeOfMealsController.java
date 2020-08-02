@@ -2,7 +2,7 @@ package com.rest.bshape.controller;
 
 import com.rest.bshape.entity.TypeOfMeal;
 import com.rest.bshape.exeption.ResourceNotFoundException;
-import com.rest.bshape.repository.TypeOfMealsRepository;
+import com.rest.bshape.repository.TypeOfMealRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +14,7 @@ import java.util.List;
 public class TypeOfMealsController {
 
     @Autowired
-    private TypeOfMealsRepository mealsRepository;
+    private TypeOfMealRepository mealsRepository;
 
     @GetMapping
     public List<TypeOfMeal> findAll() {

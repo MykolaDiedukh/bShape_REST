@@ -3,10 +3,7 @@ package com.rest.bshape.entity;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
@@ -20,6 +17,15 @@ public class UserHistory {
     private Double weight;
     private Double caloriesEated;
     private Double caloriesSchedule;
-    //TO DO
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Meal meals;
+    @OneToOne(fetch = FetchType.EAGER)
+    private User users;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private BodyType bodyTypes;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private TypeOfMeal typeOfMeals;
+    @OneToOne(fetch = FetchType.EAGER)
+    private Target targets;
 }
