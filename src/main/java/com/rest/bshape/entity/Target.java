@@ -17,7 +17,4 @@ public class Target {
     private Long id;
 
     private String futureTarget;
-
-    @OneToMany(fetch = FetchType.LAZY)
-    private List<UserHistory> userHistories;
 }
