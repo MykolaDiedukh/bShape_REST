@@ -2,8 +2,10 @@ package com.rest.bshape.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 
 @Entity
@@ -11,12 +13,19 @@ import java.time.LocalDate;
 @Getter
 public class UserHistory {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private LocalDate date;
+
     private Double weight;
-    private Double caloriesEated;
+
+    private Double caloriesEaten;
+
+    @NotEmpty
     private Double caloriesSchedule;
+
 
     @ManyToOne(fetch = FetchType.EAGER)
     private Meal meals;
