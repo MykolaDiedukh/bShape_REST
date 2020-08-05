@@ -18,6 +18,8 @@ public class BodyType {
     @NotEmpty
     private String typeOfBody;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.LAZY)
     private List<User> users;
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<UserHistory> userHistories;
 }

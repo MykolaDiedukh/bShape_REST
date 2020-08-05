@@ -3,10 +3,8 @@ package com.rest.bshape.entity;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Setter
@@ -17,5 +15,8 @@ public class TypeOfMeal {
     private Long id;
 
     private String typeMeals;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<UserHistory> userHistories;
 
 }
