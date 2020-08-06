@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/typeofmeals")
-public class TypeOfMealsController {
+@RequestMapping("/typeOfMeals")
+public class TypeOfMealController {
 
     @Autowired
     private TypeOfMealRepository mealsRepository;

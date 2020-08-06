@@ -11,6 +11,9 @@ import java.util.List;
 @Setter
 @Getter
 public class Meal {
+
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

@@ -25,25 +25,25 @@ public class User {
     @Size(min = 2)
     private String lastName;
 
-    @NotEmpty
+    /*@NotEmpty*/
     private Integer age;
 
-    @NotEmpty
+    /*@NotEmpty*/
     private Double weight;
 
-    @NotEmpty
-    @Size(min = 2)
+    /*@NotEmpty*/
+    /*@Size(min = 2)*/
     private Double height;
 
-    @NotEmpty
+    /*@NotEmpty*/
     private Integer sex;
 
-    @NotEmpty
+   /* @NotEmpty*/
     @Size(min = 6, max = 20)
     private String password;
 
     @Email
-    @NotEmpty
+   /* @NotEmpty*/
     @Size(min = 5, max = 30)
     private String email;
 
