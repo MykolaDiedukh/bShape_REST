@@ -21,16 +21,35 @@ public class UserController {
         return this.userRepository.findAll();
     }
 
+
+    /**
+    NIE DZIALA
+
+     {
+     "timestamp": "2020-08-05T20:30:42.858+00:00",
+     "message": "Could not commit JPA transaction; nested exception is javax.persistence.RollbackException: Error while committing the transaction",
+     "details": "uri=/users/1"
+     }
+     */
+
     @GetMapping("/{id}")
     public User findById(@PathVariable(value = "id") Long id){
         return this.userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id :" + id));
     }
 
+
+    /**
+     NIE DZIALA
+
+     */
     @PostMapping
     public User create(@RequestBody User user){
         return  this.userRepository.save(user);
     }
+
+
+
 
     @PutMapping("/{id}")
     public User update(@RequestBody User user, @PathVariable("id") Long id){
