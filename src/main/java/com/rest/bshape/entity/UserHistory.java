@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Entity
@@ -16,15 +16,11 @@ public class UserHistory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
     private LocalDate date;
-
     private Double weight;
-
     private Double caloriesEaten;
-
-
     private Double caloriesSchedule;
-
 
     @ManyToOne(fetch = FetchType.EAGER)
     private Meal meals;

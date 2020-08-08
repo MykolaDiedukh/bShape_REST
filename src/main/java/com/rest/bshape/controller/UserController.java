@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired
@@ -32,8 +32,6 @@ public class UserController {
     public User create(@RequestBody User user){
         return  this.userRepository.save(user);
     }
-
-
 
 
     @PutMapping("/{id}")
