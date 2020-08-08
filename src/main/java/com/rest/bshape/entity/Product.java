@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
 
@@ -17,20 +17,14 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty
+    @NotNull
     @Size(min = 3)
     private String name;
-
     private Double gigajoule;
-
     private Double calories;
-
     private Double alcohol;
-
     private Double protein;
-
     private Double fat;
-
     private Double carbohydrates;
 
     @ManyToMany(fetch = FetchType.EAGER)
