@@ -1,6 +1,7 @@
 package com.rest.bshape.controller;
 
 
+import com.rest.bshape.entity.User;
 import com.rest.bshape.entity.UserHistory;
 import com.rest.bshape.exeption.ResourceNotFoundException;
 import com.rest.bshape.repository.UserHistoryRepository;
@@ -17,6 +18,7 @@ public class UserHistoryController {
     @Autowired
     private UserHistoryRepository userHistoryRepository;
 
+
     @GetMapping
     public List<UserHistory> findAll() {
         return this.userHistoryRepository.findAll();
@@ -24,7 +26,8 @@ public class UserHistoryController {
 
 
     /**
-     NIE DZIALA
+     NIE DZIALA 404 nie znajduje ich?!
+
 
      */
     @GetMapping("{/id}")
