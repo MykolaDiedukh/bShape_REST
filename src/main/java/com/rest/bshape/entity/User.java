@@ -42,9 +42,9 @@ public class User {
     @Size(min = 6, max = 20)
     private String password;
 
-    @Email
-   /* @NotEmpty*/
-    @Size(min = 5, max = 30)
+    /*@Email
+    @NotEmpty
+    @Size(min = 5, max = 30)*/
     private String email;
 
     @ManyToOne(fetch = FetchType.EAGER)

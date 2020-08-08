@@ -22,7 +22,7 @@ public class UserHistory {
 
     private Double caloriesEaten;
 
-    @NotEmpty
+
     private Double caloriesSchedule;
 
 
@@ -36,4 +36,5 @@ public class UserHistory {
     private TypeOfMeal typeOfMeals;
     @OneToOne(fetch = FetchType.EAGER)
     private Target targets;
+
 }
