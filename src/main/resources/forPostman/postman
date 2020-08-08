@@ -1,0 +1,18 @@
+//add User
+{
+    "id": 1,
+    "firstName": "Rem",
+    "lastName": "sda",
+    "age": 12,
+    "weight": 20.4,
+    "height": 176.0,
+    "sex": 1,
+    "password": "324dfew32",
+    "email": "rdasea2@lo.pl",
+    "bodyType": null
+}
+
+//add BodyType
+{
+    "typeOfBody" : "Fat"
+}
