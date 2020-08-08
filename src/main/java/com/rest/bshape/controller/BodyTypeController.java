@@ -1,6 +1,7 @@
 package com.rest.bshape.controller;
 
 import com.rest.bshape.entity.BodyType;
+import com.rest.bshape.entity.User;
 import com.rest.bshape.exeption.ResourceNotFoundException;
 import com.rest.bshape.repository.BodyTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,9 @@ public class BodyTypeController {
     }
 
 
-    @GetMapping("/{idasqId(id)
+    @GetMapping("/{id}")
+    public BodyType findById(@PathVariable(value = "id") Long id){
+        return this.bodyTypeRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("BodyType not found with id :" + id));
     }
 
