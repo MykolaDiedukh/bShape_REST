@@ -6,6 +6,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -25,26 +26,25 @@ public class User {
     @Size(min = 2)
     private String lastName;
 
-    /*@NotEmpty*/
+    @NotNull
     private Integer age;
 
-    /*@NotEmpty*/
+    @NotNull
     private Double weight;
 
-    /*@NotEmpty*/
-    /*@Size(min = 2)*/
+    @NotNull
     private Double height;
 
-    /*@NotEmpty*/
+    @NotNull
     private Integer sex;
 
-   /* @NotEmpty*/
-    @Size(min = 6, max = 20)
+    @NotNull
+    @Size(min = 6)
     private String password;
 
-    /*@Email
-    @NotEmpty
-    @Size(min = 5, max = 30)*/
+    @Email
+    @NotNull
+    @Size(min = 5, max = 30)
     private String email;
 
     @ManyToOne(fetch = FetchType.EAGER)

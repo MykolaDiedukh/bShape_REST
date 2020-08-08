@@ -34,8 +34,6 @@ public class UserController {
     }
 
 
-
-
     @PutMapping("/{id}")
     public User update(@RequestBody User user, @PathVariable("id") Long id){
         User existingUser = this.userRepository.findById(id)
