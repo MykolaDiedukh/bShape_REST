@@ -1,7 +1,6 @@
 package com.rest.bshape.controller;
 
 import com.rest.bshape.entity.BodyType;
-import com.rest.bshape.entity.User;
 import com.rest.bshape.exeption.ResourceNotFoundException;
 import com.rest.bshape.repository.BodyTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/bodyType")
+@CrossOrigin(origins = "http://localhost:4200")
 public class BodyTypeController {
 
     @Autowired

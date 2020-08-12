@@ -1,6 +1,5 @@
 package com.rest.bshape.controller;
 
-import com.rest.bshape.entity.BodyType;
 import com.rest.bshape.entity.Meal;
 import com.rest.bshape.exeption.ResourceNotFoundException;
 import com.rest.bshape.repository.MealRepository;
@@ -12,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/meal")
+@CrossOrigin(origins = "http://localhost:4200")
 public class MealController {
 
     @Autowired

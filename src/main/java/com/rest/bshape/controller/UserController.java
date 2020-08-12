@@ -11,33 +11,34 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/user")
+@CrossOrigin(origins = "http://localhost:4200")
 public class UserController {
 
     @Autowired
     private UserRepository userRepository;
 
     @GetMapping
-    public List<User> findAll(){
+    public List<User> findAll() {
         return this.userRepository.findAll();
     }
 
 
     @GetMapping("/{id}")
-    public User findById(@PathVariable(value = "id") Long id){
+    public User findById(@PathVariable(value = "id") Long id) {
         return this.userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id :" + id));
     }
 
     @PostMapping
-    public User create(@RequestBody User user){
-        return  this.userRepository.save(user);
+    public User create(@RequestBody User user) {
+        return this.userRepository.save(user);
     }
 
 
     @PutMapping("/{id}")
-    public User update(@RequestBody User user, @PathVariable("id") Long id){
+    public User update(@RequestBody User user, @PathVariable("id") Long id) {
         User existingUser = this.userRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found with id:"+ id));
+                .orElseThrow(() -> new ResourceNotFoundException("User not found with id:" + id));
         existingUser.setFirstName(user.getFirstName());
         existingUser.setLastName(user.getLastName());
         existingUser.setAge(user.getAge());
@@ -50,9 +51,9 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<User> delete(@PathVariable("id") Long id){
+    public ResponseEntity<User> delete(@PathVariable("id") Long id) {
         User existingUser = this.userRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found with id:"+ id));
+                .orElseThrow(() -> new ResourceNotFoundException("User not found with id:" + id));
         this.userRepository.delete(existingUser);
         return ResponseEntity.ok().build();
     }
