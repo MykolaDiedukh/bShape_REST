@@ -19,8 +19,18 @@ public class UserHistory {
     @NotNull
     private LocalDate date;
     private Double weight;
+    private Double alcoholEaten;
+    private Double alcoholSchedule;
     private Double caloriesEaten;
     private Double caloriesSchedule;
+    private Double carbohydratesEaten;
+    private Double carbohydratesSchedule;
+    private Double fatEaten;
+    private Double fatSchedule;
+    private Double gigajouleEaten;
+    private Double gigajouleSchedule;
+    private Double proteinEaten;
+    private Double proteinSchedule;
 
     @ManyToOne(fetch = FetchType.EAGER)
     private Meal meals;
