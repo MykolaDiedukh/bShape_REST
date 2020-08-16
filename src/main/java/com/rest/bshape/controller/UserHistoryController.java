@@ -1,8 +1,7 @@
 package com.rest.bshape.controller;
 
 import com.rest.bshape.entity.UserHistory;
-import com.rest.bshape.exeption.ResourceNotFoundException;
-import com.rest.bshape.repository.UserHistoryRepository;
+import com.rest.bshape.sevices.UserHistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,42 +14,32 @@ import java.util.List;
 public class UserHistoryController {
 
     @Autowired
-    private UserHistoryRepository userHistoryRepository;
+    private UserHistoryService userHistoryService;
 
     @GetMapping
     public List<UserHistory> findAll() {
-        return this.userHistoryRepository.findAll();
+        return this.userHistoryService.findAll();
     }
 
 
     @GetMapping("/{id}")
     public UserHistory findById(@PathVariable(value = "id") Long id) {
-        return this.userHistoryRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("UserHistory not found with id :" + id));
+        return this.userHistoryService.findById(id);
     }
 
     @PostMapping
     public UserHistory create(@RequestBody UserHistory userHistory) {
-        return this.userHistoryRepository.save(userHistory);
+        return this.userHistoryService.create(userHistory);
     }
 
 
     @PutMapping("/{id}")
     public UserHistory update(@RequestBody UserHistory userHistory, @PathVariable("id") Long id) {
-        UserHistory existingUserHistory = this.userHistoryRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("UserHistory not found with id:" + id));
-        existingUserHistory.setDate(userHistory.getDate());
-        existingUserHistory.setWeight(userHistory.getWeight());
-        existingUserHistory.setCaloriesEaten(userHistory.getCaloriesEaten());
-        existingUserHistory.setCaloriesSchedule(userHistory.getCaloriesSchedule());
-        return this.userHistoryRepository.save(existingUserHistory);
+        return this.userHistoryService.update(userHistory, id);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<UserHistory> delete(@PathVariable("id") Long id) {
-        UserHistory existingUserHistory = this.userHistoryRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("UserHistory not found with id:" + id));
-        this.userHistoryRepository.delete(existingUserHistory);
-        return ResponseEntity.ok().build();
+        return this.userHistoryService.delete(id);
     }
 }

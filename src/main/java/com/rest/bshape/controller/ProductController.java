@@ -1,8 +1,7 @@
 package com.rest.bshape.controller;
 
 import com.rest.bshape.entity.Product;
-import com.rest.bshape.exeption.ResourceNotFoundException;
-import com.rest.bshape.repository.ProductRepository;
+import com.rest.bshape.sevices.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,45 +14,32 @@ import java.util.List;
 public class ProductController {
 
     @Autowired
-    private ProductRepository productRepository;
+    private ProductService productService;
 
     @GetMapping
     public List<Product> findAll() {
-        return this.productRepository.findAll();
+        return this.productService.findAll();
     }
 
 
     @GetMapping("/{id}")
     public Product findById(@PathVariable(value = "id") Long id) {
-        return this.productRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Product not found with id :" + id));
+        return this.productService.findById(id);
     }
 
     @PostMapping
     public Product create(@RequestBody Product product) {
-        return this.productRepository.save(product);
+        return this.productService.create(product);
     }
 
 
     @PutMapping("/{id}")
     public Product update(@RequestBody Product product, @PathVariable("id") Long id) {
-        Product existingProduct = this.productRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Product not found with id:" + id));
-        existingProduct.setName(product.getName());
-        existingProduct.setGigajoule(product.getGigajoule());
-        existingProduct.setCalories(product.getCalories());
-        existingProduct.setAlcohol(product.getAlcohol());
-        existingProduct.setProtein(product.getProtein());
-        existingProduct.setFat(product.getFat());
-        existingProduct.setCarbohydrates(product.getCarbohydrates());
-        return this.productRepository.save(existingProduct);
+        return this.productService.update(product, id);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Product> delete(@PathVariable("id") Long id) {
-        Product existingProduct = this.productRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Product not found with id:" + id));
-        this.productRepository.delete(existingProduct);
-        return ResponseEntity.ok().build();
+        return this.productService.delete(id);
     }
 }
