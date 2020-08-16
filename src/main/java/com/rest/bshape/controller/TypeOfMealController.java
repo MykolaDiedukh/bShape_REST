@@ -3,6 +3,7 @@ package com.rest.bshape.controller;
 import com.rest.bshape.entity.TypeOfMeal;
 import com.rest.bshape.exeption.ResourceNotFoundException;
 import com.rest.bshape.repository.TypeOfMealRepository;
+import com.rest.bshape.sevices.TypeOfMealService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,37 +16,30 @@ import java.util.List;
 public class TypeOfMealController {
 
     @Autowired
-    private TypeOfMealRepository mealsRepository;
+    private TypeOfMealService typeOfMealService;
 
     @GetMapping
     public List<TypeOfMeal> findAll() {
-        return this.mealsRepository.findAll();
+        return this.typeOfMealService.findAll();
     }
 
     @GetMapping("/{id}")
     public TypeOfMeal findById(@PathVariable(value = "id") Long id) {
-        return this.mealsRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Type of meal not found with id: " + id));
+        return this.typeOfMealService.findById(id);
     }
 
     @PostMapping
     public TypeOfMeal create(@RequestBody TypeOfMeal typeOfMeal){
-        return this.mealsRepository.save(typeOfMeal);
+        return this.typeOfMealService.create(typeOfMeal);
     }
 
     @PutMapping("/{id}")
     public TypeOfMeal update(@RequestBody TypeOfMeal typeOfMeal, @PathVariable(value = "id") Long id){
-        TypeOfMeal existingMeal = this.mealsRepository.findById(id)
-                .orElseThrow(()->new ResourceNotFoundException("Type of meal was not found, with id: " + id));
-        existingMeal.setTypeMeals(typeOfMeal.getTypeMeals());
-        return this.mealsRepository.save(existingMeal);
+        return this.typeOfMealService.update(typeOfMeal,id);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<TypeOfMeal> delete(@PathVariable("id") Long id){
-        TypeOfMeal existingMeal = this.mealsRepository.findById(id)
-                .orElseThrow(()->new ResourceNotFoundException("Type of meal was not found, with id: " + id));
-        this.mealsRepository.delete(existingMeal);
-        return ResponseEntity.ok().build();
+return this.typeOfMealService.delete(id);
     }
 }
