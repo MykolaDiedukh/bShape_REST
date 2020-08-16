@@ -1,8 +1,6 @@
 package com.rest.bshape.controller;
 
 import com.rest.bshape.entity.TypeOfMeal;
-import com.rest.bshape.exeption.ResourceNotFoundException;
-import com.rest.bshape.repository.TypeOfMealRepository;
 import com.rest.bshape.sevices.TypeOfMealService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

@@ -34,7 +34,7 @@ public class TypeOfMealService implements MainService<TypeOfMeal> {
     @Override
     public TypeOfMeal update(TypeOfMeal typeOfMeal, Long id) {
         TypeOfMeal existingMeal = this.typeOfMealRepository.findById(id)
-                .orElseThrow(()->new ResourceNotFoundException("Type of meal was not found, with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Type of meal was not found, with id: " + id));
         existingMeal.setTypeMeals(typeOfMeal.getTypeMeals());
         return this.typeOfMealRepository.save(existingMeal);
     }
@@ -42,7 +42,7 @@ public class TypeOfMealService implements MainService<TypeOfMeal> {
     @Override
     public ResponseEntity<TypeOfMeal> delete(Long id) {
         TypeOfMeal existingMeal = this.typeOfMealRepository.findById(id)
-                .orElseThrow(()->new ResourceNotFoundException("Type of meal was not found, with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Type of meal was not found, with id: " + id));
         this.typeOfMealRepository.delete(existingMeal);
         return ResponseEntity.ok().build();
     }
