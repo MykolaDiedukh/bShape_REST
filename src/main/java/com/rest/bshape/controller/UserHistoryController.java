@@ -41,8 +41,16 @@ public class UserHistoryController {
                 .orElseThrow(() -> new ResourceNotFoundException("UserHistory not found with id:" + id));
         existingUserHistory.setDate(userHistory.getDate());
         existingUserHistory.setWeight(userHistory.getWeight());
+        existingUserHistory.setAlcoholEaten(userHistory.getAlcoholEaten());
+        existingUserHistory.setAlcoholSchedule(userHistory.getAlcoholSchedule());
         existingUserHistory.setCaloriesEaten(userHistory.getCaloriesEaten());
         existingUserHistory.setCaloriesSchedule(userHistory.getCaloriesSchedule());
+        existingUserHistory.setCaloriesEaten(userHistory.getCarbohydratesEaten());
+        existingUserHistory.setCaloriesSchedule(userHistory.getCarbohydratesSchedule());
+        existingUserHistory.setFatEaten(userHistory.getFatEaten());
+        existingUserHistory.setFatSchedule(userHistory.getFatSchedule());
+        existingUserHistory.setProteinEaten(userHistory.getProteinEaten());
+        existingUserHistory.setProteinSchedule(userHistory.getProteinSchedule());
         return this.userHistoryRepository.save(existingUserHistory);
     }
 
