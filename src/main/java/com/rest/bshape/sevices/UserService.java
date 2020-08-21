@@ -60,14 +60,6 @@ public class UserService implements MainService<User> {
         if (existingUser.getEmail().isBlank() || existingUser.getPassword().isBlank()){
             return ResponseEntity.notFound().build();
         }
-//        this.userRepository.findByEmailAndPassword(existingUser.getEmail(), existingUser.getPassword());
         return ResponseEntity.ok().build();
     }
-
-   /* public ResponseEntity<User> getLogin(User user) {
-        User existingUser = this.userRepository.findByEmailAndPassword(user.getEmail(), user.getPassword())
-                .orElseThrow(() -> new ResourceNotFoundException("User not found with id:"));
-        this.userRepository.delete(existingUser);
-        return ResponseEntity.ok().build();
-    }*/
 }
