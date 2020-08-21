@@ -55,12 +55,14 @@ public class UserService implements MainService<User> {
     }
 
 
-   /* public ResponseEntity<User> getLogin(User user) {
+    public ResponseEntity<User> getLogin(User user) {
         User existingUser = this.userRepository.findByEmailAndPassword(user.getEmail(), user.getPassword());
-
-        this.userRepository.findByEmailAndPassword(existingUser.getEmail(), existingUser.getPassword());
+        if (existingUser.getEmail().isBlank() || existingUser.getPassword().isBlank()){
+            return ResponseEntity.notFound().build();
+        }
+//        this.userRepository.findByEmailAndPassword(existingUser.getEmail(), existingUser.getPassword());
         return ResponseEntity.ok().build();
-    }*/
+    }
 
    /* public ResponseEntity<User> getLogin(User user) {
         User existingUser = this.userRepository.findByEmailAndPassword(user.getEmail(), user.getPassword())

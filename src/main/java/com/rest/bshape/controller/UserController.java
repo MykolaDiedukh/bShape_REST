@@ -40,10 +40,10 @@ public class UserController {
     public ResponseEntity<User> delete(@PathVariable("id") Long id) {
         return this.userService.delete(id);
     }
-/*
+
     @GetMapping("/login")
     public ResponseEntity<User> getLogin(@RequestBody User user){
         return this.userService.getLogin(user);
-    }*/
+    }
 
 }
