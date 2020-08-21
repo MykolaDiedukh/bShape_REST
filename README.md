@@ -45,7 +45,7 @@ Run AppInitializer for starting spring boot rest server
  3. http://localhost:8090/user/ -create user, request POST
  4. http://localhost:8090/user/i -update user  with index "i", request PUT
  5. http://localhost:8090/user/i -dalete user  with index "i", request DELETE
- 6. http://localhost:8090/user/login -check if 
+ 6. http://localhost:8090/user/login -check if have user by email and password
  
  ### Commands for userHistory:
  1. http://localhost:8090/userHistory/ -return all userHistory, request GET
