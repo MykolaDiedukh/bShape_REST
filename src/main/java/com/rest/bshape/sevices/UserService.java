@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService implements MainService<User> {
@@ -56,10 +57,8 @@ public class UserService implements MainService<User> {
 
 
     public ResponseEntity<User> getLogin(User user) {
-        User existingUser = this.userRepository.findByEmailAndPassword(user.getEmail(), user.getPassword());
-        if (existingUser.getEmail().isBlank() || existingUser.getPassword().isBlank()){
-            return ResponseEntity.notFound().build();
-        }
+        Optional.ofNullable(this.userRepository.findByEmailAndPassword(user.getEmail(), user.getPassword()))
+                .orElseThrow(() -> new ResourceNotFoundException("Not found"));
         return ResponseEntity.ok().build();
     }
 }
