@@ -30,8 +30,8 @@ public class UserController {
     }
 
     @PostMapping
-    public UserDTO create(@RequestBody UserDTO user) {
-        return this.userService.create(user);
+    public UserDTO create(@RequestBody UserDTO userDTO) {
+        return userService.create(userDTO).orElseThrow(() -> new ResourceNotFoundException("User not created"));
     }
 
     @PutMapping("/{id}")

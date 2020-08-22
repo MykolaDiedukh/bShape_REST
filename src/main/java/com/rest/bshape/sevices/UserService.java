@@ -19,34 +19,7 @@ public class UserService implements GenericService<UserDTO> {
         this.userRepository = userRepository;
     }
 
-    @Override
-    public Optional<List<UserDTO>> findAll() {
-        List<User> optionalAllUser = this.userRepository.findAll();
-        if(optionalAllUser.isEmpty()){
-            return Optional.empty();
-        }
-        return optionalAllUser.map(this::convertToDTO);
-    }
-
-    @Override
-    public Optional<UserDTO> findById(Long id) {
-        Optional<User> optionalUser = userRepository.findById(id);
-
-        if (optionalUser.isEmpty()){
-            return Optional.empty();
-        }
-
-        return optionalUser.map(this::convertToDTO);
-    }
-
-//    @Override
-//    public User findById(Long id) {
-//        return this.userRepository.findById(id)
-//                .orElseThrow(() -> new ResourceNotFoundException("User not found with id :" + id));
-//    }
-
-
-    private UserDTO convertToDTO(User user){
+    private UserDTO convertToDTO(User user) {
         return UserDTO.builder()
                 .id(user.getId())
                 .email(user.getEmail())
@@ -60,7 +33,7 @@ public class UserService implements GenericService<UserDTO> {
                 .build();
     }
 
-    private User convertFromDTO(UserDTO userDTO){
+    private User convertFromDTO(UserDTO userDTO) {
         return User.builder()
                 .id(userDTO.getId())
                 .email(userDTO.getEmail())
@@ -74,6 +47,25 @@ public class UserService implements GenericService<UserDTO> {
                 .build();
     }
 
+    @Override
+    public Optional<List<UserDTO>> findAll() {
+        List<User> optionalAllUser = this.userRepository.findAll();
+        if (optionalAllUser.isEmpty()) {
+            return Optional.empty();
+        }
+        return optionalAllUser.map(this::convertToDTO);
+    }
+
+    @Override
+    public Optional<UserDTO> findById(Long id) {
+        Optional<User> optionalUser = userRepository.findById(id);
+
+        if (optionalUser.isEmpty()) {
+            return Optional.empty();
+        }
+
+        return optionalUser.map(this::convertToDTO);
+    }
 
     @Override
     public Optional<UserDTO> create(UserDTO user) {
@@ -98,7 +90,7 @@ public class UserService implements GenericService<UserDTO> {
     }
 
     @Override
-    public ResponseEntity<User> delete(Long id) {
+    public ResponseEntity<UserDTO> delete(Long id) {
         User existingUser = this.userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id:" + id));
         this.userRepository.delete(existingUser);
