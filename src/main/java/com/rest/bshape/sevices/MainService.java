@@ -1,9 +1,11 @@
 package com.rest.bshape.sevices;
 
+import com.rest.bshape.UserDTO;
+import com.rest.bshape.entity.User;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface MainService<T> {
 
@@ -12,7 +14,7 @@ public interface MainService<T> {
     public List<T> findAll();
 
 //    @GetMapping("/{id}")
-    public T findById( Long id);
+    public Optional<UserDTO> findById(Long id);
 
 //    @PostMapping
     public T create( T t);

@@ -1,9 +1,9 @@
 package com.rest.bshape.sevices;
 
+import com.rest.bshape.UserDTO;
 import com.rest.bshape.entity.User;
 import com.rest.bshape.exeption.ResourceNotFoundException;
 import com.rest.bshape.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserService implements MainService<User> {
+public class UserService implements MainService<UserDTO> {
 
     private final UserRepository userRepository;
 
@@ -25,13 +25,40 @@ public class UserService implements MainService<User> {
     }
 
     @Override
-    public User findById(Long id) {
-        return this.userRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found with id :" + id));
+    public Optional<UserDTO> findById(Long id) {
+        Optional<User> optionalUser = userRepository.findById(id);
+
+        if (optionalUser.isEmpty()){
+            return Optional.empty();
+        }
+
+        return optionalUser.map(this::convertToDTO);
     }
 
+//    @Override
+//    public User findById(Long id) {
+//        return this.userRepository.findById(id)
+//                .orElseThrow(() -> new ResourceNotFoundException("User not found with id :" + id));
+//    }
+
+
+    private UserDTO convertToDTO(User user){
+        return UserDTO.builder()
+                .age(user.getAge())
+                //itd
+                .build();
+    }
+
+    private User convertFromDTO(UserDTO userDTO){
+        return User.builder()
+                .age(userDTO.getAge())
+                //itd
+                .build();
+    }
+
+
     @Override
-    public User create(User user) {
+    public UserDTO create(UserDTO user) {
         return this.userRepository.save(user);
     }
 

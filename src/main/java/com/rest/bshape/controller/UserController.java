@@ -1,6 +1,8 @@
 package com.rest.bshape.controller;
 
+import com.rest.bshape.UserDTO;
 import com.rest.bshape.entity.User;
+import com.rest.bshape.exeption.ResourceNotFoundException;
 import com.rest.bshape.sevices.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -8,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/user")
@@ -24,12 +25,12 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public User findById(@PathVariable(value = "id") Long id) {
-        return this.userService.findById(id);
+    public UserDTO findById(@PathVariable(value = "id") Long id) {
+        return userService.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found with id :" + id));
     }
 
     @PostMapping
-    public User create(@RequestBody User user) {
+    public UserDTO create(@RequestBody UserDTO user) {
         return this.userService.create(user);
     }
 

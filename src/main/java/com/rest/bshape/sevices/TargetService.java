@@ -1,6 +1,7 @@
 package com.rest.bshape.sevices;
 
 import com.rest.bshape.entity.Target;
+import com.rest.bshape.entity.User;
 import com.rest.bshape.exeption.ResourceNotFoundException;
 import com.rest.bshape.repository.TargetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TargetService implements MainService<Target> {
@@ -21,7 +23,7 @@ public class TargetService implements MainService<Target> {
     }
 
     @Override
-    public Target findById(Long id) {
+    public Optional<User> findById(Long id) {
         return this.targetRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Target not found with id :" + id));
     }

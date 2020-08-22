@@ -1,5 +1,6 @@
 package com.rest.bshape.sevices;
 
+import com.rest.bshape.entity.User;
 import com.rest.bshape.entity.UserHistory;
 import com.rest.bshape.exeption.ResourceNotFoundException;
 import com.rest.bshape.repository.UserHistoryRepository;
@@ -8,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserHistoryService implements MainService<UserHistory> {
@@ -21,7 +23,7 @@ public class UserHistoryService implements MainService<UserHistory> {
     }
 
     @Override
-    public UserHistory findById(Long id) {
+    public Optional<User> findById(Long id) {
         return this.userHistoryRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("UserHistory not found with id :" + id));
     }
