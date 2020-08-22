@@ -62,8 +62,15 @@ public class UserService implements GenericService<UserDTO> {
 
     private User convertFromDTO(UserDTO userDTO){
         return User.builder()
+                .id(userDTO.getId())
+                .email(userDTO.getEmail())
+                .firstName(userDTO.getFirstName())
+                .lastName(userDTO.getLastName())
+                .height(userDTO.getHeight())
                 .age(userDTO.getAge())
-                //itd
+                .password(userDTO.getPassword())
+                .sex(userDTO.getSex())
+                .weight(userDTO.getWeight())
                 .build();
     }
 
