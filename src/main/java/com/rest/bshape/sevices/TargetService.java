@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class TargetService implements MainService<Target> {
+public class TargetService implements GenericService<Target> {
 
     @Autowired
     private TargetRepository targetRepository;

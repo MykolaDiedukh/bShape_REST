@@ -1,6 +1,6 @@
 package com.rest.bshape.sevices;
 
-import com.rest.bshape.UserDTO;
+import com.rest.bshape.dto.UserDTO;
 import com.rest.bshape.entity.User;
 import com.rest.bshape.exeption.ResourceNotFoundException;
 import com.rest.bshape.repository.UserRepository;
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserService implements MainService<UserDTO> {
+public class UserService implements GenericService<UserDTO> {
 
     private final UserRepository userRepository;
 
@@ -20,8 +20,12 @@ public class UserService implements MainService<UserDTO> {
     }
 
     @Override
-    public List<User> findAll() {
-        return this.userRepository.findAll();
+    public Optional<List<UserDTO>> findAll() {
+        List<User> optionalAllUser = this.userRepository.findAll();
+        if(optionalAllUser.isEmpty()){
+            return Optional.empty();
+        }
+        return optionalAllUser.map(this::convertToDTO);
     }
 
     @Override
@@ -44,8 +48,15 @@ public class UserService implements MainService<UserDTO> {
 
     private UserDTO convertToDTO(User user){
         return UserDTO.builder()
+                .id(user.getId())
+                .email(user.getEmail())
+                .firstName(user.getFirstName())
+                .lastName(user.getLastName())
+                .height(user.getHeight())
                 .age(user.getAge())
-                //itd
+                .password(user.getPassword())
+                .sex(user.getSex())
+                .weight(user.getWeight())
                 .build();
     }
 
@@ -59,6 +70,7 @@ public class UserService implements MainService<UserDTO> {
 
     @Override
     public UserDTO create(UserDTO user) {
+
         return this.userRepository.save(user);
     }
 

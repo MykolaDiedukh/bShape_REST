@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class TypeOfMealService implements MainService<TypeOfMeal> {
+public class TypeOfMealService implements GenericService<TypeOfMeal> {
 
     @Autowired
     private TypeOfMealRepository typeOfMealRepository;

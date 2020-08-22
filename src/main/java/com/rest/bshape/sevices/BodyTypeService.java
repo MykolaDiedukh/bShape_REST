@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class BodyTypeService implements MainService<BodyType> {
+public class BodyTypeService implements GenericService<BodyType> {
 
     @Autowired
     private BodyTypeRepository bodyTypeRepository;

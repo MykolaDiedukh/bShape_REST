@@ -1,6 +1,6 @@
 package com.rest.bshape.controller;
 
-import com.rest.bshape.UserDTO;
+import com.rest.bshape.dto.UserDTO;
 import com.rest.bshape.entity.User;
 import com.rest.bshape.exeption.ResourceNotFoundException;
 import com.rest.bshape.sevices.UserService;

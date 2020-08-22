@@ -1,4 +1,4 @@
-package com.rest.bshape;
+package com.rest.bshape.dto;
 
 import com.rest.bshape.entity.BodyType;
 import lombok.Builder;

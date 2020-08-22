@@ -1,20 +1,19 @@
 package com.rest.bshape.sevices;
 
-import com.rest.bshape.UserDTO;
-import com.rest.bshape.entity.User;
+import com.rest.bshape.dto.UserDTO;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface MainService<T> {
+public interface GenericService<T> {
 
 
 //    @GetMapping
-    public List<T> findAll();
+    public Optional<List<T>> findAll();
 
 //    @GetMapping("/{id}")
-    public Optional<UserDTO> findById(Long id);
+    public Optional<T> findById(Long id);
 
 //    @PostMapping
     public T create( T t);

@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ProductService implements MainService<Product> {
+public class ProductService implements GenericService<Product> {
 
     @Autowired
     private ProductRepository productRepository;

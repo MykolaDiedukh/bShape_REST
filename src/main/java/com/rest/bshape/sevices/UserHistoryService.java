@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserHistoryService implements MainService<UserHistory> {
+public class UserHistoryService implements GenericService<UserHistory> {
 
     @Autowired
     private UserHistoryRepository userHistoryRepository;
