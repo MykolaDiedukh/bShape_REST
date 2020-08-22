@@ -76,9 +76,10 @@ public class UserService implements GenericService<UserDTO> {
 
 
     @Override
-    public UserDTO create(UserDTO user) {
+    public Optional<UserDTO> create(UserDTO user) {
 
-        return this.userRepository.save(user);
+        S save = this.userRepository.save(user);
+        return save;
     }
 
     @Override

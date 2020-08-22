@@ -20,8 +20,8 @@ public class UserController {
     private UserService userService;
 
     @GetMapping
-    public List<User> findAll() {
-        return this.userService.findAll();
+    public List<UserDTO> findAll() {
+        return userService.findAll().orElseThrow(() -> new ResourceNotFoundException("User not found with"));
     }
 
     @GetMapping("/{id}")

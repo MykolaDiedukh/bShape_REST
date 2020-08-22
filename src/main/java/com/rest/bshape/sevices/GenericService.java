@@ -16,7 +16,7 @@ public interface GenericService<T> {
     public Optional<T> findById(Long id);
 
 //    @PostMapping
-    public T create( T t);
+    public Optional<T> create( T t);
 
 //    @PutMapping("/{id}")
     public T update(T t, Long id);
