@@ -3,10 +3,12 @@ package com.rest.bshape.controller;
 import com.rest.bshape.entity.User;
 import com.rest.bshape.sevices.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/user")
@@ -42,8 +44,8 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public ResponseEntity<User> getLogin(@RequestBody User user){
-        return this.userService.getLogin(user);
+    public ResponseEntity<User> getLogin(@RequestBody User user) {
+        return userService.getLogin(user).isPresent() ? new ResponseEntity<>(HttpStatus.OK) : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
 }

@@ -13,8 +13,11 @@ import java.util.Optional;
 @Service
 public class UserService implements MainService<User> {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Override
     public List<User> findAll() {
@@ -55,10 +58,7 @@ public class UserService implements MainService<User> {
         return ResponseEntity.ok().build();
     }
 
-
-    public ResponseEntity<User> getLogin(User user) {
-        Optional.ofNullable(this.userRepository.findByEmailAndPassword(user.getEmail(), user.getPassword()))
-                .orElseThrow(() -> new ResourceNotFoundException("Not found"));
-        return ResponseEntity.ok().build();
+    public Optional<User> getLogin(User user) {
+        return userRepository.findByEmailAndPassword(user.getEmail(), user.getPassword());
     }
 }
