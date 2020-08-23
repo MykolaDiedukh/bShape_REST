@@ -1,4 +1,4 @@
-package com.rest.bshape.repository;
+package com.rest.bshape.userhistory;
 
 import com.rest.bshape.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;

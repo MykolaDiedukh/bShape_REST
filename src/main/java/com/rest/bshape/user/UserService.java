@@ -1,7 +1,7 @@
 package com.rest.bshape.user;
 
 import com.rest.bshape.exeption.ResourceNotFoundException;
-import com.rest.bshape.repository.UserRepository;
+import com.rest.bshape.userhistory.UserRepository;
 import lombok.val;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;

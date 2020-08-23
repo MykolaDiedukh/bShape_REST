@@ -1,7 +1,5 @@
-package com.rest.bshape.controller;
+package com.rest.bshape.userhistory;
 
-import com.rest.bshape.entity.UserHistory;
-import com.rest.bshape.sevices.UserHistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

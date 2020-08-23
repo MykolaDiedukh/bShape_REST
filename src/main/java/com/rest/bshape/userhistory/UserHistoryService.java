@@ -1,7 +1,7 @@
-package com.rest.bshape.sevices;
+package com.rest.bshape.userhistory;
 
+import com.rest.bshape.sevices.GenericService;
 import com.rest.bshape.user.User;
-import com.rest.bshape.entity.UserHistory;
 import com.rest.bshape.exeption.ResourceNotFoundException;
 import com.rest.bshape.user.UserHistoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
