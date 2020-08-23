@@ -4,6 +4,7 @@ import com.rest.bshape.dto.UserDTO;
 import com.rest.bshape.entity.User;
 import com.rest.bshape.exeption.ResourceNotFoundException;
 import com.rest.bshape.repository.UserRepository;
+import lombok.val;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -62,9 +63,9 @@ public class UserService implements GenericService<UserDTO> {
 
     @Override
     public Optional<UserDTO> create(UserDTO userDTO) {
-
-        S save = userRepository.save(user);
-        return save;
+        User user = this.convertFromDTO(userDTO);
+        Optional<UserDTO> optionalUser = Optional.ofNullable(this.convertToDTO(userRepository.save(user)));
+        return optionalUser.isEmpty() ? Optional.empty() : optionalUser;
     }
 
 //    @Override
@@ -74,6 +75,7 @@ public class UserService implements GenericService<UserDTO> {
 
     @Override
     public Optional<UserDTO> update(UserDTO userDTO, Long id) {
+        User user = this.convertFromDTO(userDTO);
 
         User existingUser = this.userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id:" + id));
@@ -85,7 +87,8 @@ public class UserService implements GenericService<UserDTO> {
         existingUser.setSex(user.getSex());
         existingUser.setPassword(user.getPassword());
         existingUser.setEmail(user.getEmail());
-        return this.userRepository.save(existingUser);
+        val save = userRepository.save(existingUser);
+        return userRepository.save(existingUser);
     }
 
     @Override
