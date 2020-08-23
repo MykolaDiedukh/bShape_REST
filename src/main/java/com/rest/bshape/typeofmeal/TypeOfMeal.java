@@ -1,5 +1,6 @@
-package com.rest.bshape.entity;
+package com.rest.bshape.typeofmeal;
 
+import com.rest.bshape.entity.UserHistory;
 import lombok.Getter;
 import lombok.Setter;
 
