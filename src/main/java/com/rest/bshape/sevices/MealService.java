@@ -1,6 +1,7 @@
 package com.rest.bshape.sevices;
 
 import com.rest.bshape.entity.Meal;
+import com.rest.bshape.entity.User;
 import com.rest.bshape.exeption.ResourceNotFoundException;
 import com.rest.bshape.repository.MealRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,9 +9,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
-public class MealService implements MainService<Meal> {
+public class MealService implements GenericService<Meal> {
 
     @Autowired
     private MealRepository mealRepository;
@@ -21,7 +23,7 @@ public class MealService implements MainService<Meal> {
     }
 
     @Override
-    public Meal findById(Long id) {
+    public Optional<User> findById(Long id) {
         return this.mealRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Meal not found with id :" + id));
     }
