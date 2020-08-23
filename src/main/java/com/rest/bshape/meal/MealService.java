@@ -1,6 +1,7 @@
-package com.rest.bshape.sevices;
+package com.rest.bshape.meal;
 
-import com.rest.bshape.entity.Meal;
+import com.rest.bshape.meal.Meal;
+import com.rest.bshape.sevices.GenericService;
 import com.rest.bshape.user.User;
 import com.rest.bshape.exeption.ResourceNotFoundException;
 import com.rest.bshape.repository.MealRepository;
@@ -23,7 +24,7 @@ public class MealService implements GenericService<Meal> {
     }
 
     @Override
-    public Optional<User> findById(Long id) {
+    public Optional<Meal> findById(Long id) {
         return this.mealRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Meal not found with id :" + id));
     }

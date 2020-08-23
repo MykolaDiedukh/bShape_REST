@@ -21,9 +21,7 @@ class UserService {
     }
 
     public List<UserDTO> findAll() {
-
         List<User> optionalAllUser = this.userRepository.findAll();
-
         return optionalAllUser.isEmpty() ? Collections.emptyList() : optionalAllUser.stream()
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
@@ -36,6 +34,7 @@ class UserService {
 
     public Optional<UserID> create(UserDTO userDTO) {
         User user = this.convertFromDTO(userDTO);
+
         User createdUser = userRepository.save(user);
         val userID = new UserID(createdUser.getId());
         return Optional.of(userID);
@@ -69,6 +68,7 @@ class UserService {
 
     public Optional<UserDTO> getLogin(UserDTO userDTO) {
         User user = this.convertFromDTO(userDTO);
+
         Optional<User> userByEmailAndPassword = userRepository.findByEmailAndPassword(user.getEmail(), user.getPassword());
         return userByEmailAndPassword.map(this::convertToDTO);
     }

@@ -1,7 +1,5 @@
-package com.rest.bshape.controller;
+package com.rest.bshape.meal;
 
-import com.rest.bshape.entity.Meal;
-import com.rest.bshape.sevices.MealService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
