@@ -1,6 +1,6 @@
 package com.rest.bshape.user;
 
-import com.rest.bshape.entity.BodyType;
+import com.rest.bshape.bodytype.BodyType;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,7 +17,7 @@ import javax.validation.constraints.Size;
 @Getter
 @Builder
 @NoArgsConstructor
- class User {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

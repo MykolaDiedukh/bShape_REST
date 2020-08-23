@@ -1,5 +1,6 @@
 package com.rest.bshape.entity;
 
+import com.rest.bshape.bodytype.BodyType;
 import com.rest.bshape.meal.Meal;
 import com.rest.bshape.user.User;
 import lombok.Getter;

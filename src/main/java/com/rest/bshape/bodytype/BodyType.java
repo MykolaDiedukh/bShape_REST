@@ -1,5 +1,6 @@
-package com.rest.bshape.entity;
+package com.rest.bshape.bodytype;
 
+import com.rest.bshape.entity.UserHistory;
 import com.rest.bshape.user.User;
 import lombok.Getter;
 import lombok.Setter;

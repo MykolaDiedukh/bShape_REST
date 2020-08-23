@@ -1,11 +1,11 @@
-package com.rest.bshape.repository;
+package com.rest.bshape.user;
 
-import com.rest.bshape.meal.Meal;
+import com.rest.bshape.entity.UserHistory;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 @Repository
 @CrossOrigin(origins = "http://localhost:4200")
-public interface MealRepository extends JpaRepository<Meal, Long> {
+public interface UserHistoryRepository extends JpaRepository<UserHistory, Long> {
 }

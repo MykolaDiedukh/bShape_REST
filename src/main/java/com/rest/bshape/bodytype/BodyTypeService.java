@@ -1,9 +1,7 @@
-package com.rest.bshape.sevices;
+package com.rest.bshape.bodytype;
 
-import com.rest.bshape.entity.BodyType;
-import com.rest.bshape.user.User;
+import com.rest.bshape.sevices.GenericService;
 import com.rest.bshape.exeption.ResourceNotFoundException;
-import com.rest.bshape.repository.BodyTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -23,7 +21,7 @@ public class BodyTypeService implements GenericService<BodyType> {
     }
 
     @Override
-    public Optional<User> findById(Long id) {
+    public Optional<BodyType> findById(Long id) {
         return this.bodyTypeRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("BodyType not found with id :" + id));
     }

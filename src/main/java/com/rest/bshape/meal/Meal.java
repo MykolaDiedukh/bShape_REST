@@ -13,8 +13,6 @@ import java.util.List;
 @Getter
 public class Meal {
 
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

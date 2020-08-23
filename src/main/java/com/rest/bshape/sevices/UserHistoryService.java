@@ -3,7 +3,7 @@ package com.rest.bshape.sevices;
 import com.rest.bshape.user.User;
 import com.rest.bshape.entity.UserHistory;
 import com.rest.bshape.exeption.ResourceNotFoundException;
-import com.rest.bshape.repository.UserHistoryRepository;
+import com.rest.bshape.user.UserHistoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;

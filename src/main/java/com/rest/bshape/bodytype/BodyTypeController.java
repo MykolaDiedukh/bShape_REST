@@ -1,7 +1,5 @@
-package com.rest.bshape.controller;
+package com.rest.bshape.bodytype;
 
-import com.rest.bshape.entity.BodyType;
-import com.rest.bshape.sevices.BodyTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
