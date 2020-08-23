@@ -7,19 +7,14 @@ import java.util.Optional;
 
 public interface GenericService<T> {
 
+    List<T> findAll();
 
-//    @GetMapping
-    public Optional<List<T>> findAll();
+    Optional<T> findById(Long id);
 
-//    @GetMapping("/{id}")
-    public Optional<T> findById(Long id);
+    Optional<T> create( T t);
 
-//    @PostMapping
-    public Optional<T> create( T t);
+    Optional<T> update(T t, Long id);
 
-//    @PutMapping("/{id}")
-    public Optional<T> update(T t, Long id);
+    ResponseEntity<T> delete(Long id);
 
-//    @DeleteMapping("/{id}")
-    public ResponseEntity<T> delete(Long id);
 }
