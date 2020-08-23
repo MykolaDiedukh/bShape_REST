@@ -1,6 +1,6 @@
 package com.rest.bshape.bodytype;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.rest.bshape.exeption.ResourceNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,29 +11,31 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:4200")
 public class BodyTypeController {
 
-    @Autowired
-    private BodyTypeService bodyTypeService;
+    private final BodyTypeService bodyTypeService;
+
+    public BodyTypeController(BodyTypeService bodyTypeService) {
+        this.bodyTypeService = bodyTypeService;
+    }
 
     @GetMapping
-    public List<BodyType> findAll() {
+    public List<BodyTypeDTO> findAll() {
         return this.bodyTypeService.findAll();
     }
 
-
     @GetMapping("/{id}")
-    public BodyType findById(@PathVariable(value = "id") Long id) {
-        return this.bodyTypeService.findById(id);
+    public BodyTypeDTO findById(@PathVariable(value = "id") Long id) {
+        return bodyTypeService.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found with id :" + id));
     }
 
     @PostMapping
-    public BodyType create(@RequestBody BodyType bodyType) {
-        return this.bodyTypeService.create(bodyType);
+    public BodyTypeID create(@RequestBody BodyTypeDTO bodyTypeDTO) {
+        return bodyTypeService.create(bodyTypeDTO).orElseThrow(() -> new ResourceNotFoundException("User not created"));
     }
 
 
     @PutMapping("/{id}")
-    public BodyType update(@RequestBody BodyType bodyType, @PathVariable("id") Long id) {
-        return this.bodyTypeService.update(bodyType, id);
+    public BodyTypeDTO update(@RequestBody BodyTypeDTO bodyTypeDTO, @PathVariable("id") Long id) {
+        return bodyTypeService.update(bodyTypeDTO, id).orElseThrow(() -> new ResourceNotFoundException("User not found with id :" + id));
     }
 
     @DeleteMapping("/{id}")

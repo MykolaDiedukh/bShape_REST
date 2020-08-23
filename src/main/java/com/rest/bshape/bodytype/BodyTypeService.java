@@ -1,49 +1,77 @@
 package com.rest.bshape.bodytype;
 
-import com.rest.bshape.sevices.GenericService;
 import com.rest.bshape.exeption.ResourceNotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.val;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
-public class BodyTypeService implements GenericService<BodyType> {
+public class BodyTypeService {
 
-    @Autowired
-    private BodyTypeRepository bodyTypeRepository;
+    private final BodyTypeRepository bodyTypeRepository;
 
-    @Override
-    public List<BodyType> findAll() {
-        return this.bodyTypeRepository.findAll();
+    public BodyTypeService(BodyTypeRepository bodyTypeRepository) {
+        this.bodyTypeRepository = bodyTypeRepository;
     }
 
-    @Override
-    public Optional<BodyType> findById(Long id) {
-        return this.bodyTypeRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("BodyType not found with id :" + id));
+    public List<BodyTypeDTO> findAll() {
+        List<BodyType> optionalAllBodyType = this.bodyTypeRepository.findAll();
+        return optionalAllBodyType.isEmpty() ? Collections.emptyList() : optionalAllBodyType.stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
     }
 
-    @Override
-    public BodyType create(BodyType bodyType) {
-        return this.bodyTypeRepository.save(bodyType);
+    public Optional<BodyTypeDTO> findById(Long id) {
+        Optional<BodyType> optionalBodyType = bodyTypeRepository.findById(id);
+        return optionalBodyType.isEmpty() ? Optional.empty() : optionalBodyType.map(this::convertToDTO);
     }
 
-    @Override
-    public BodyType update(BodyType bodyType, Long id) {
-        BodyType existingBodyType = this.bodyTypeRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("BodyType not found with id:" + id));
+
+    public Optional<BodyTypeID> create(BodyTypeDTO bodyTypeDTO) {
+        BodyType bodyType = this.convertFromDTO(bodyTypeDTO);
+
+        BodyType createdBodyType = bodyTypeRepository.save(bodyType);
+        val bodyTypeID = new BodyTypeID(createdBodyType.getId());
+        return Optional.of(bodyTypeID);
+    }
+
+    public Optional<BodyTypeDTO> update(BodyTypeDTO bodyTypeDTO, Long id) {
+        BodyType bodyType = this.convertFromDTO(bodyTypeDTO);
+
+        Optional<BodyType> bodyTypeById = bodyTypeRepository.findById(id);
+        if (bodyTypeById.isEmpty()) {
+            return Optional.empty();
+        }
+        BodyType existingBodyType = bodyTypeById.get();
         existingBodyType.setTypeOfBody(bodyType.getTypeOfBody());
-        return this.bodyTypeRepository.save(existingBodyType);
+        return Optional.of(this.convertToDTO(bodyTypeRepository.save(existingBodyType)));
     }
 
-    @Override
     public ResponseEntity<BodyType> delete(Long id) {
         BodyType existingBodyType = this.bodyTypeRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("BodyType not found with id:" + id));
         this.bodyTypeRepository.delete(existingBodyType);
         return ResponseEntity.ok().build();
+    }
+
+    private BodyTypeDTO convertToDTO(BodyType bodyType) {
+        return BodyTypeDTO.builder()
+                .id(bodyType.getId())
+                .typeOfBody(bodyType.getTypeOfBody())
+//                .users(bodyType.getUsers())
+                .build();
+    }
+
+    private BodyType convertFromDTO(BodyTypeDTO bodyTypeDTO) {
+        return BodyType.builder()
+                .id(bodyTypeDTO.getId())
+                .typeOfBody(bodyTypeDTO.getTypeOfBody())
+//                .users(bodyTypeDTO.getUsers())
+                .build();
     }
 }

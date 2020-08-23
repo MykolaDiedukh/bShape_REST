@@ -43,7 +43,7 @@ class UserService {
     public Optional<UserDTO> update(UserDTO userDTO, Long id) {
         User user = this.convertFromDTO(userDTO);
 
-        Optional<User> userById = this.userRepository.findById(id);
+        Optional<User> userById = userRepository.findById(id);
         if (userById.isEmpty()) {
             return Optional.empty();
         }

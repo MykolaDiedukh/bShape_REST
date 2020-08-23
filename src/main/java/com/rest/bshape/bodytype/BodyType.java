@@ -2,6 +2,7 @@ package com.rest.bshape.bodytype;
 
 import com.rest.bshape.userhistory.UserHistory;
 import com.rest.bshape.user.User;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,6 +14,7 @@ import java.util.List;
 @Entity
 @Setter
 @Getter
+@Builder
 public class BodyType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
