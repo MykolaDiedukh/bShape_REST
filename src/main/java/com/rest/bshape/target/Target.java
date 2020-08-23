@@ -1,9 +1,6 @@
 package com.rest.bshape.target;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,6 +11,7 @@ import javax.persistence.Id;
 @Setter
 @Getter
 @Builder
+@AllArgsConstructor
 @NoArgsConstructor
 public class Target {
 
