@@ -8,24 +8,16 @@ import com.rest.bshape.user.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
-@Entity
-@Setter
 @Getter
 @Builder
 @NoArgsConstructor
-public class UserHistory {
+public class UserHistoryDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
     private LocalDate date;
     private Double weight;
     private Double alcoholEaten;
@@ -41,15 +33,14 @@ public class UserHistory {
     private Double proteinEaten;
     private Double proteinSchedule;
 
-    @ManyToOne(fetch = FetchType.EAGER)
     private Meal meals;
-    @OneToOne(fetch = FetchType.EAGER)
+
     private User users;
-    @ManyToOne(fetch = FetchType.EAGER)
+
     private BodyType bodyTypes;
-    @ManyToOne(fetch = FetchType.EAGER)
+
     private TypeOfMeal typeOfMeals;
-    @OneToOne(fetch = FetchType.EAGER)
+
     private Target targets;
 
 }
