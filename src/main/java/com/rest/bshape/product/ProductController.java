@@ -1,6 +1,6 @@
 package com.rest.bshape.product;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.rest.bshape.exeption.ResourceNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,29 +11,32 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:4200")
 public class ProductController {
 
-    @Autowired
-    private ProductService productService;
+    private final ProductService productService;
+
+    public ProductController(ProductService productService) {
+        this.productService = productService;
+    }
 
     @GetMapping
-    public List<Product> findAll() {
+    public List<ProductDTO> findAll() {
         return this.productService.findAll();
     }
 
 
     @GetMapping("/{id}")
-    public Product findById(@PathVariable(value = "id") Long id) {
-        return this.productService.findById(id);
+    public ProductDTO findById(@PathVariable(value = "id") Long id) {
+        return productService.findById(id).orElseThrow(() -> new ResourceNotFoundException("Meal not found with id :" + id));
     }
 
     @PostMapping
-    public Product create(@RequestBody Product product) {
-        return this.productService.create(product);
+    public ProductID create(@RequestBody ProductDTO productDTO) {
+        return productService.create(productDTO).orElseThrow(() -> new ResourceNotFoundException("User not created"));
     }
 
 
     @PutMapping("/{id}")
-    public Product update(@RequestBody Product product, @PathVariable("id") Long id) {
-        return this.productService.update(product, id);
+    public ProductDTO update(@RequestBody ProductDTO productDTO, @PathVariable("id") Long id) {
+        return productService.update(productDTO, id).orElseThrow(() -> new ResourceNotFoundException("User not found with id :" + id));
     }
 
     @DeleteMapping("/{id}")

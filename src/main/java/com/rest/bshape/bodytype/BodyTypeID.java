@@ -5,6 +5,6 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class BodyTypeID {
 
-    private Long id;
+    private final Long id;
 
 }
