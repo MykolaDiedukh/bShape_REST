@@ -1,6 +1,6 @@
 package com.rest.bshape.meal;
 
-import com.rest.bshape.entity.Product;
+import com.rest.bshape.Product.Product;
 import lombok.Getter;
 import lombok.Setter;
 

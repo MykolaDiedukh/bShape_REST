@@ -1,7 +1,5 @@
-package com.rest.bshape.controller;
+package com.rest.bshape.Product;
 
-import com.rest.bshape.entity.Product;
-import com.rest.bshape.sevices.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

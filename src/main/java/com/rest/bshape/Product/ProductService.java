@@ -1,9 +1,8 @@
-package com.rest.bshape.sevices;
+package com.rest.bshape.Product;
 
-import com.rest.bshape.entity.Product;
+import com.rest.bshape.sevices.GenericService;
 import com.rest.bshape.user.User;
 import com.rest.bshape.exeption.ResourceNotFoundException;
-import com.rest.bshape.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;

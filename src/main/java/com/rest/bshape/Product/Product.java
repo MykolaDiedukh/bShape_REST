@@ -1,4 +1,4 @@
-package com.rest.bshape.entity;
+package com.rest.bshape.Product;
 
 import com.rest.bshape.meal.Meal;
 import lombok.Getter;
