@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 import java.util.function.Supplier;
 
 @Entity
-//@Setter
+@Setter
 @Getter
 @Builder
 //@AllArgsConstructor

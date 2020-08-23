@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService implements GenericService<UserDTO> {
@@ -50,32 +51,30 @@ public class UserService implements GenericService<UserDTO> {
     @Override
     public Optional<List<UserDTO>> findAll() {
         List<User> optionalAllUser = this.userRepository.findAll();
-        if (optionalAllUser.isEmpty()) {
-            return Optional.empty();
-        }
-        return optionalAllUser.map(this::convertToDTO);
+        return optionalAllUser.isEmpty() ? Optional.empty() : Optional.of(optionalAllUser.stream().map(this::convertToDTO).collect(Collectors.toList()));
     }
 
     @Override
     public Optional<UserDTO> findById(Long id) {
         Optional<User> optionalUser = userRepository.findById(id);
-
-        if (optionalUser.isEmpty()) {
-            return Optional.empty();
-        }
-
-        return optionalUser.map(this::convertToDTO);
+        return optionalUser.isEmpty() ? Optional.empty() : optionalUser.map(this::convertToDTO);
     }
 
     @Override
-    public Optional<UserDTO> create(UserDTO user) {
+    public Optional<UserDTO> create(UserDTO userDTO) {
 
-        S save = this.userRepository.save(user);
+        S save = userRepository.save(user);
         return save;
     }
 
+//    @Override
+//    public Optional<UserDTO> update(UserDTO userDTO, Long id) {
+//        return Optional.empty();
+//    }
+
     @Override
-    public User update(User user, Long id) {
+    public Optional<UserDTO> update(UserDTO userDTO, Long id) {
+
         User existingUser = this.userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id:" + id));
         existingUser.setFirstName(user.getFirstName());

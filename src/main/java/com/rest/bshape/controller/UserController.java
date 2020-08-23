@@ -16,8 +16,11 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:4200")
 public class UserController {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping
     public List<UserDTO> findAll() {
@@ -35,8 +38,8 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public User update(@RequestBody User user, @PathVariable("id") Long id) {
-        return this.userService.update(user, id);
+    public UserDTO update(@RequestBody UserDTO userDTO, @PathVariable("id") Long id) {
+        return userService.update(userDTO, id).orElseThrow(() -> new ResourceNotFoundException("User not found with id :" + id));
     }
 
     @DeleteMapping("/{id}")

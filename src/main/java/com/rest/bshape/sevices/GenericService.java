@@ -1,6 +1,5 @@
 package com.rest.bshape.sevices;
 
-import com.rest.bshape.dto.UserDTO;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
@@ -19,7 +18,7 @@ public interface GenericService<T> {
     public Optional<T> create( T t);
 
 //    @PutMapping("/{id}")
-    public T update(T t, Long id);
+    public Optional<T> update(T t, Long id);
 
 //    @DeleteMapping("/{id}")
     public ResponseEntity<T> delete(Long id);
