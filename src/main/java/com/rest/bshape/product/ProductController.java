@@ -1,4 +1,4 @@
-package com.rest.bshape.Product;
+package com.rest.bshape.product;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

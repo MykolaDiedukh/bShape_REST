@@ -1,4 +1,4 @@
-package com.rest.bshape.Product;
+package com.rest.bshape.product;
 
 import com.rest.bshape.sevices.GenericService;
 import com.rest.bshape.user.User;

@@ -1,6 +1,6 @@
 package com.rest.bshape.meal;
 
-import com.rest.bshape.Product.Product;
+import com.rest.bshape.product.Product;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
