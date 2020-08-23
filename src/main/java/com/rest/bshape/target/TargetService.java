@@ -1,50 +1,74 @@
 package com.rest.bshape.target;
 
-import com.rest.bshape.sevices.GenericService;
-import com.rest.bshape.user.User;
 import com.rest.bshape.exeption.ResourceNotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.val;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
-public class TargetService implements GenericService<Target> {
+public class TargetService {
 
-    @Autowired
-    private TargetRepository targetRepository;
+    private final TargetRepository targetRepository;
 
-    @Override
-    public List<Target> findAll() {
-        return this.targetRepository.findAll();
+    public TargetService(TargetRepository targetRepository) {
+        this.targetRepository = targetRepository;
     }
 
-    @Override
-    public Optional<User> findById(Long id) {
-        return this.targetRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Target not found with id :" + id));
+    public List<TargetDTO> findAll() {
+        List<Target> optionalTarget = this.targetRepository.findAll();
+        return optionalTarget.isEmpty() ? Collections.emptyList() : optionalTarget.stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
     }
 
-    @Override
-    public Target create(Target target) {
-        return this.targetRepository.save(target);
+    public Optional<TargetDTO> findById(Long id) {
+        Optional<Target> optionalTarget = targetRepository.findById(id);
+        return optionalTarget.isEmpty() ? Optional.empty() : optionalTarget.map(this::convertToDTO);
     }
 
-    @Override
-    public Target update(Target target, Long id) {
-        Target existingTarget = this.targetRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Target not found with id:" + id));
+    public Optional<TargetID> create(TargetDTO targetDTO) {
+        Target target = this.convertFromDTO(targetDTO);
+
+        Target createdTarget = targetRepository.save(target);
+        val targetID = new TargetID(createdTarget.getId());
+        return Optional.of(targetID);
+    }
+
+    public Optional<TargetDTO> update(TargetDTO targetDTO, Long id) {
+        Target target = this.convertFromDTO(targetDTO);
+
+        Optional<Target> targetById = targetRepository.findById(id);
+        if (targetById.isEmpty()) {
+            return Optional.empty();
+        }
+        Target existingTarget = targetById.get();
         existingTarget.setFutureTarget(target.getFutureTarget());
-        return this.targetRepository.save(existingTarget);
+        return Optional.of(this.convertToDTO(targetRepository.save(existingTarget)));
     }
 
-    @Override
     public ResponseEntity<Target> delete(Long id) {
         Target existingTarget = this.targetRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Target not found with id:" + id));
         this.targetRepository.delete(existingTarget);
         return ResponseEntity.ok().build();
+    }
+
+    private TargetDTO convertToDTO(Target target) {
+        return TargetDTO.builder()
+                .id(target.getId())
+                .futureTarget(target.getFutureTarget())
+                .build();
+    }
+
+    private Target convertFromDTO(TargetDTO targetDTO) {
+        return Target.builder()
+                .id(targetDTO.getId())
+                .futureTarget(targetDTO.getFutureTarget())
+                .build();
     }
 }
