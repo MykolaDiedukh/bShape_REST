@@ -1,8 +1,5 @@
-package com.rest.bshape.sevices;
+package com.rest.bshape.user;
 
-import com.rest.bshape.dto.UserDTO;
-import com.rest.bshape.dto.UserID;
-import com.rest.bshape.entity.User;
 import com.rest.bshape.exeption.ResourceNotFoundException;
 import com.rest.bshape.repository.UserRepository;
 import lombok.val;
@@ -15,7 +12,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class UserService {
+class UserService {
 
     private final UserRepository userRepository;
 
@@ -70,8 +67,10 @@ public class UserService {
         return ResponseEntity.ok().build();
     }
 
-    public Optional<User> getLogin(User user) {
-        return userRepository.findByEmailAndPassword(user.getEmail(), user.getPassword());
+    public Optional<UserDTO> getLogin(UserDTO userDTO) {
+        User user = this.convertFromDTO(userDTO);
+        Optional<User> userByEmailAndPassword = userRepository.findByEmailAndPassword(user.getEmail(), user.getPassword());
+        return userByEmailAndPassword.map(this::convertToDTO);
     }
 
     private UserDTO convertToDTO(User user) {

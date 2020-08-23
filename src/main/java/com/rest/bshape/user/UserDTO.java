@@ -1,13 +1,11 @@
-package com.rest.bshape.dto;
+package com.rest.bshape.user;
 
-import com.rest.bshape.entity.BodyType;
 import lombok.Builder;
 import lombok.Getter;
 
-
 @Builder
 @Getter
-public class UserDTO {
+ class UserDTO {
 
     private Long id;
 

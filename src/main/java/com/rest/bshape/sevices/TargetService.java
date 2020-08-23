@@ -1,7 +1,7 @@
 package com.rest.bshape.sevices;
 
 import com.rest.bshape.entity.Target;
-import com.rest.bshape.entity.User;
+import com.rest.bshape.user.User;
 import com.rest.bshape.exeption.ResourceNotFoundException;
 import com.rest.bshape.repository.TargetRepository;
 import org.springframework.beans.factory.annotation.Autowired;

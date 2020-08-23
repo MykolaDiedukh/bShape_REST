@@ -1,10 +1,9 @@
-package com.rest.bshape.dto;
+package com.rest.bshape.user;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
 
 @AllArgsConstructor
-public class UserID {
+class UserID {
 
     private final Long id;
 

@@ -1,6 +1,6 @@
 package com.rest.bshape.sevices;
 
-import com.rest.bshape.entity.User;
+import com.rest.bshape.user.User;
 import com.rest.bshape.entity.UserHistory;
 import com.rest.bshape.exeption.ResourceNotFoundException;
 import com.rest.bshape.repository.UserHistoryRepository;

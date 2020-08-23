@@ -1,10 +1,6 @@
-package com.rest.bshape.controller;
+package com.rest.bshape.user;
 
-import com.rest.bshape.dto.UserDTO;
-import com.rest.bshape.dto.UserID;
-import com.rest.bshape.entity.User;
 import com.rest.bshape.exeption.ResourceNotFoundException;
-import com.rest.bshape.sevices.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/user")
 @CrossOrigin(origins = "http://localhost:4200")
-public class UserController {
+class UserController {
 
     private final UserService userService;
 
@@ -48,8 +44,8 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public ResponseEntity<User> getLogin(@RequestBody User user) {
-        return userService.getLogin(user).isPresent() ? new ResponseEntity<>(HttpStatus.OK) : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    public ResponseEntity<UserDTO> getLogin(@RequestBody UserDTO userDTO) {
+        return userService.getLogin(userDTO).isPresent() ? new ResponseEntity<>(HttpStatus.OK) : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
 }

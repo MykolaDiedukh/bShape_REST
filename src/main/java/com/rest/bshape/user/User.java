@@ -1,21 +1,23 @@
-package com.rest.bshape.entity;
+package com.rest.bshape.user;
 
-import lombok.*;
+import com.rest.bshape.entity.BodyType;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.function.Supplier;
 
 @Entity
 @Setter
 @Getter
 @Builder
-//@AllArgsConstructor
 @NoArgsConstructor
-public class User {
+ class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
