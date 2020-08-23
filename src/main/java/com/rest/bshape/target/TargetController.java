@@ -25,18 +25,18 @@ public class TargetController {
 
     @GetMapping("/{id}")
     public TargetDTO findById(@PathVariable(value = "id") Long id) {
-        return targetService.findById(id).orElseThrow(() -> new ResourceNotFoundException("Meal not found with id :" + id));
+        return targetService.findById(id).orElseThrow(() -> new ResourceNotFoundException("Target not found with id :" + id));
     }
 
     @PostMapping
     public TargetID create(@RequestBody TargetDTO targetDTO) {
-        return targetService.create(targetDTO).orElseThrow(() -> new ResourceNotFoundException("User not created"));
+        return targetService.create(targetDTO).orElseThrow(() -> new ResourceNotFoundException("Target not created"));
     }
 
 
     @PutMapping("/{id}")
     public TargetDTO update(@RequestBody TargetDTO targetDTO, @PathVariable("id") Long id) {
-        return targetService.update(targetDTO, id).orElseThrow(() -> new ResourceNotFoundException("User not found with id :" + id));
+        return targetService.update(targetDTO, id).orElseThrow(() -> new ResourceNotFoundException("Target not found with id :" + id));
     }
 
     @DeleteMapping("/{id}")

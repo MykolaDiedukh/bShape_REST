@@ -30,13 +30,13 @@ public class MealController {
 
     @PostMapping
     public MealID create(@RequestBody MealDTO mealDTO) {
-        return mealService.create(mealDTO).orElseThrow(() -> new ResourceNotFoundException("User not created"));
+        return mealService.create(mealDTO).orElseThrow(() -> new ResourceNotFoundException("Meal not created"));
     }
 
 
     @PutMapping("/{id}")
     public MealDTO update(@RequestBody MealDTO mealDTO, @PathVariable("id") Long id) {
-        return mealService.update(mealDTO, id).orElseThrow(() -> new ResourceNotFoundException("User not found with id :" + id));
+        return mealService.update(mealDTO, id).orElseThrow(() -> new ResourceNotFoundException("Meal not found with id :" + id));
     }
 
     @DeleteMapping("/{id}")
