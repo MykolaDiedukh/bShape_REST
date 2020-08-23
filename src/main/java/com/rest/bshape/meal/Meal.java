@@ -1,10 +1,7 @@
 package com.rest.bshape.meal;
 
 import com.rest.bshape.product.Product;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -14,6 +11,7 @@ import java.util.List;
 @Setter
 @Getter
 @Builder
+@AllArgsConstructor
 @NoArgsConstructor
 public class Meal {
 

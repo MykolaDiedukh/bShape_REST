@@ -1,10 +1,7 @@
 package com.rest.bshape.user;
 
 import com.rest.bshape.bodytype.BodyType;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -16,6 +13,7 @@ import javax.validation.constraints.Size;
 @Setter
 @Getter
 @Builder
+@AllArgsConstructor
 @NoArgsConstructor
 public class User {
 

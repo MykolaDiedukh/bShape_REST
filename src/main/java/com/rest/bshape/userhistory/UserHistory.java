@@ -5,10 +5,7 @@ import com.rest.bshape.meal.Meal;
 import com.rest.bshape.target.Target;
 import com.rest.bshape.typeofmeal.TypeOfMeal;
 import com.rest.bshape.user.User;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -18,6 +15,7 @@ import java.time.LocalDate;
 @Setter
 @Getter
 @Builder
+@AllArgsConstructor
 @NoArgsConstructor
 public class UserHistory {
 
