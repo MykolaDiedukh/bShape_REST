@@ -24,18 +24,18 @@ public class BodyTypeController {
 
     @GetMapping("/{id}")
     public BodyTypeDTO findById(@PathVariable(value = "id") Long id) {
-        return bodyTypeService.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found with id :" + id));
+        return bodyTypeService.findById(id).orElseThrow(() -> new ResourceNotFoundException("BodyType not found with id :" + id));
     }
 
     @PostMapping
     public BodyTypeID create(@RequestBody BodyTypeDTO bodyTypeDTO) {
-        return bodyTypeService.create(bodyTypeDTO).orElseThrow(() -> new ResourceNotFoundException("User not created"));
+        return bodyTypeService.create(bodyTypeDTO).orElseThrow(() -> new ResourceNotFoundException("BodyType not created"));
     }
 
 
     @PutMapping("/{id}")
     public BodyTypeDTO update(@RequestBody BodyTypeDTO bodyTypeDTO, @PathVariable("id") Long id) {
-        return bodyTypeService.update(bodyTypeDTO, id).orElseThrow(() -> new ResourceNotFoundException("User not found with id :" + id));
+        return bodyTypeService.update(bodyTypeDTO, id).orElseThrow(() -> new ResourceNotFoundException("BodyType not found with id :" + id));
     }
 
     @DeleteMapping("/{id}")

@@ -1,6 +1,6 @@
 package com.rest.bshape.meal;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.rest.bshape.exeption.ResourceNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,29 +11,32 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:4200")
 public class MealController {
 
-    @Autowired
-    private MealService mealService;
+    private final MealService mealService;
+
+    public MealController(MealService mealService) {
+        this.mealService = mealService;
+    }
 
     @GetMapping
-    public List<Meal> findAll() {
+    public List<MealDTO> findAll() {
         return this.mealService.findAll();
     }
 
 
     @GetMapping("/{id}")
-    public Meal findById(@PathVariable(value = "id") Long id) {
-        return this.mealService.findById(id);
+    public MealDTO findById(@PathVariable(value = "id") Long id) {
+        return mealService.findById(id).orElseThrow(() -> new ResourceNotFoundException("Meal not found with id :" + id));
     }
 
     @PostMapping
-    public Meal create(@RequestBody Meal meal) {
-        return this.mealService.create(meal);
+    public MealID create(@RequestBody MealDTO mealDTO) {
+        return mealService.create(mealDTO).orElseThrow(() -> new ResourceNotFoundException("User not created"));
     }
 
 
     @PutMapping("/{id}")
-    public Meal update(@RequestBody Meal meal, @PathVariable("id") Long id) {
-        return this.mealService.update(meal, id);
+    public MealDTO update(@RequestBody MealDTO mealDTO, @PathVariable("id") Long id) {
+        return mealService.update(mealDTO, id).orElseThrow(() -> new ResourceNotFoundException("User not found with id :" + id));
     }
 
     @DeleteMapping("/{id}")
