@@ -19,8 +19,8 @@ public class TypeOfMeal {
     private Long id;
 
     private String typeMeals;
-
-    @OneToMany(fetch = FetchType.LAZY)
-    private List<UserHistory> userHistories;
+//
+//    @OneToMany(fetch = FetchType.LAZY)
+//    private List<UserHistory> userHistories;
 
 }

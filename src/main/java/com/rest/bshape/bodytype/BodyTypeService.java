@@ -63,7 +63,6 @@ public class BodyTypeService {
         return BodyTypeDTO.builder()
                 .id(bodyType.getId())
                 .typeOfBody(bodyType.getTypeOfBody())
-//                .users(bodyType.getUsers())
                 .build();
     }
 
@@ -71,7 +70,6 @@ public class BodyTypeService {
         return BodyType.builder()
                 .id(bodyTypeDTO.getId())
                 .typeOfBody(bodyTypeDTO.getTypeOfBody())
-//                .users(bodyTypeDTO.getUsers())
                 .build();
     }
 }

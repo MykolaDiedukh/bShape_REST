@@ -30,6 +30,6 @@ public class Product {
     private Double fat;
     private Double carbohydrates;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    private List<Meal> meals;
+//    @ManyToMany(fetch = FetchType.EAGER)
+//    private List<Meal> meals;
 }

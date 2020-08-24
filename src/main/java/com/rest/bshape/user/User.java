@@ -50,7 +50,7 @@ public class User {
     @Size(min = 5, max = 30)
     private String email;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER)
     private BodyType bodyType;
 
 }
