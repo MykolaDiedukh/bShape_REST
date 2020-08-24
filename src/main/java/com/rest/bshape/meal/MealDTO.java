@@ -13,5 +13,4 @@ public class MealDTO {
 
     private String mealName;
 
-//    private List<ProductDTO> products;
 }
