@@ -22,6 +22,6 @@ public class Meal {
     @NotEmpty
     private String mealName;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Product> products;
 }

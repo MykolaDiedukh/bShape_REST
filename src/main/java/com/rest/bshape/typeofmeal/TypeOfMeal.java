@@ -1,10 +1,11 @@
 package com.rest.bshape.typeofmeal;
 
-import com.rest.bshape.userhistory.UserHistory;
 import lombok.*;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 @Setter
@@ -19,8 +20,4 @@ public class TypeOfMeal {
     private Long id;
 
     private String typeMeals;
-
-    @OneToMany(fetch = FetchType.LAZY)
-    private List<UserHistory> userHistories;
-
 }

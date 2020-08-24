@@ -10,6 +10,7 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Setter
@@ -39,13 +40,13 @@ public class UserHistory {
     private Double proteinEaten;
     private Double proteinSchedule;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Meal meals;
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<Meal> meals;
     @OneToOne(fetch = FetchType.EAGER)
     private User users;
-    @ManyToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER)
     private BodyType bodyTypes;
-    @ManyToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER)
     private TypeOfMeal typeOfMeals;
     @OneToOne(fetch = FetchType.EAGER)
     private Target targets;

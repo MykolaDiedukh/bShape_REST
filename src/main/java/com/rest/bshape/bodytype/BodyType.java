@@ -1,21 +1,22 @@
 package com.rest.bshape.bodytype;
 
-import com.rest.bshape.userhistory.UserHistory;
-import com.rest.bshape.user.User;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.List;
 
 @Entity
 @Setter
 @Getter
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class BodyType {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,8 +25,4 @@ public class BodyType {
     @Size(min = 3)
     private String typeOfBody;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    private List<User> users;
-    @OneToMany(fetch = FetchType.LAZY)
-    private List<UserHistory> userHistories;
 }

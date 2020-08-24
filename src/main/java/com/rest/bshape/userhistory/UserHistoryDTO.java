@@ -1,16 +1,17 @@
 package com.rest.bshape.userhistory;
 
-import com.rest.bshape.bodytype.BodyType;
-import com.rest.bshape.meal.Meal;
-import com.rest.bshape.target.Target;
-import com.rest.bshape.typeofmeal.TypeOfMeal;
-import com.rest.bshape.user.User;
+import com.rest.bshape.bodytype.BodyTypeDTO;
+import com.rest.bshape.meal.MealDTO;
+import com.rest.bshape.target.TargetDTO;
+import com.rest.bshape.typeofmeal.TypeOfMealDTO;
+import com.rest.bshape.user.UserDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Builder
@@ -35,14 +36,14 @@ public class UserHistoryDTO {
     private Double proteinEaten;
     private Double proteinSchedule;
 
-    private Meal meals;
+    private List<MealDTO> mealDTO;
 
-    private User users;
+    private UserDTO userDTO;
 
-    private BodyType bodyTypes;
+    private BodyTypeDTO bodyTypeDTO;
 
-    private TypeOfMeal typeOfMeals;
+    private TypeOfMealDTO typeOfMealDTO;
 
-    private Target targets;
+    private TargetDTO targetDTO;
 
 }

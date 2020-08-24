@@ -1,5 +1,7 @@
 package com.rest.bshape.user;
 
+import com.rest.bshape.bodytype.BodyType;
+import com.rest.bshape.bodytype.BodyTypeDTO;
 import com.rest.bshape.exeption.ResourceNotFoundException;
 import com.rest.bshape.userhistory.UserRepository;
 import lombok.val;
@@ -84,6 +86,7 @@ class UserService {
                 .password(user.getPassword())
                 .sex(user.getSex())
                 .weight(user.getWeight())
+                .bodyTypeDTO(user.getBodyType())
                 .build();
     }
 
@@ -98,6 +101,21 @@ class UserService {
                 .password(userDTO.getPassword())
                 .sex(userDTO.getSex())
                 .weight(userDTO.getWeight())
+                .bodyType(userDTO.getBodyTypeDTO().stream.map(this::convertFromDTO).c)
+                .build();
+    }
+
+    private BodyTypeDTO convertToDTO(BodyType bodyType) {
+        return BodyTypeDTO.builder()
+                .id(bodyType.getId())
+                .typeOfBody(bodyType.getTypeOfBody())
+                .build();
+    }
+
+    private BodyType convertFromDTO(BodyTypeDTO bodyTypeDTO) {
+        return BodyType.builder()
+                .id(bodyTypeDTO.getId())
+                .typeOfBody(bodyTypeDTO.getTypeOfBody())
                 .build();
     }
 }
