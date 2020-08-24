@@ -1,6 +1,8 @@
 package com.rest.bshape.meal;
 
 import com.rest.bshape.exeption.ResourceNotFoundException;
+import com.rest.bshape.product.Product;
+import com.rest.bshape.product.ProductDTO;
 import lombok.val;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -62,6 +64,7 @@ public class MealService {
         return MealDTO.builder()
                 .id(meal.getId())
                 .mealName(meal.getMealName())
+                .productDTO(meal.getProducts().stream().map(this::convertToDTO).collect(Collectors.toList()))
                 .build();
     }
 
@@ -69,6 +72,33 @@ public class MealService {
         return Meal.builder()
                 .id(mealDTO.getId())
                 .mealName(mealDTO.getMealName())
+                .products(mealDTO.getProductDTO().stream().map(this::convertFromDTO).collect(Collectors.toList()))
+                .build();
+    }
+
+    private ProductDTO convertToDTO(Product product) {
+        return ProductDTO.builder()
+                .id(product.getId())
+                .name(product.getName())
+                .alcohol(product.getAlcohol())
+                .calories(product.getCalories())
+                .carbohydrates(product.getCarbohydrates())
+                .fat(product.getFat())
+                .gigajoule(product.getGigajoule())
+                .protein(product.getProtein())
+                .build();
+    }
+
+    private Product convertFromDTO(ProductDTO productDTO) {
+        return Product.builder()
+                .id(productDTO.getId())
+                .name(productDTO.getName())
+                .alcohol(productDTO.getAlcohol())
+                .calories(productDTO.getCalories())
+                .carbohydrates(productDTO.getCarbohydrates())
+                .fat(productDTO.getFat())
+                .gigajoule(productDTO.getGigajoule())
+                .protein(productDTO.getProtein())
                 .build();
     }
 }

@@ -1,10 +1,15 @@
 package com.rest.bshape.user;
 
+import com.rest.bshape.bodytype.BodyTypeDTO;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Builder
 @Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public
 class UserDTO {
 
@@ -26,5 +31,5 @@ class UserDTO {
 
     private String email;
 
-//    private BodyTypeDTO bodyType;//powinno byc DTO
+    private BodyTypeDTO bodyTypeDTO;
 }
