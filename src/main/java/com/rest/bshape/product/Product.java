@@ -1,12 +1,13 @@
 package com.rest.bshape.product;
 
-import com.rest.bshape.meal.Meal;
 import lombok.*;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.List;
 
 @Entity
 @Setter
@@ -30,6 +31,4 @@ public class Product {
     private Double fat;
     private Double carbohydrates;
 
-//    @ManyToMany(fetch = FetchType.EAGER)
-//    private List<Meal> meals;
 }

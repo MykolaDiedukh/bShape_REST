@@ -75,7 +75,6 @@ public class ProductService {
                 .fat(product.getFat())
                 .gigajoule(product.getGigajoule())
                 .protein(product.getProtein())
-//                .meals(product.getMeals())
                 .build();
     }
 
@@ -89,7 +88,6 @@ public class ProductService {
                 .fat(productDTO.getFat())
                 .gigajoule(productDTO.getGigajoule())
                 .protein(productDTO.getProtein())
-//                .meals(product.getMeals())
                 .build();
     }
 }
