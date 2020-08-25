@@ -3,7 +3,7 @@ package com.rest.bshape.bodytype;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-public class BodyTypeID {
+class BodyTypeID {
 
     private final Long id;
 

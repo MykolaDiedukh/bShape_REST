@@ -13,7 +13,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class MealService {
+class MealService {
 
     private final MealRepository mealRepository;
 

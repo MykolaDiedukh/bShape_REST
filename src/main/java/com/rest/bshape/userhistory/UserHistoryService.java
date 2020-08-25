@@ -1,6 +1,18 @@
 package com.rest.bshape.userhistory;
 
+import com.rest.bshape.bodytype.BodyType;
+import com.rest.bshape.bodytype.BodyTypeDTO;
 import com.rest.bshape.exeption.ResourceNotFoundException;
+import com.rest.bshape.meal.Meal;
+import com.rest.bshape.meal.MealDTO;
+import com.rest.bshape.product.Product;
+import com.rest.bshape.product.ProductDTO;
+import com.rest.bshape.target.Target;
+import com.rest.bshape.target.TargetDTO;
+import com.rest.bshape.typeofmeal.TypeOfMeal;
+import com.rest.bshape.typeofmeal.TypeOfMealDTO;
+import com.rest.bshape.user.User;
+import com.rest.bshape.user.UserDTO;
 import com.rest.bshape.user.UserHistoryRepository;
 import lombok.val;
 import org.springframework.http.ResponseEntity;
@@ -83,7 +95,7 @@ public class UserHistoryService {
                 .id(userHistory.getId())
                 .alcoholEaten(userHistory.getAlcoholEaten())
                 .alcoholSchedule(userHistory.getAlcoholSchedule())
-//                .bodyTypeDTO(userHistory.getBodyTypes())
+                .bodyTypeDTO(this.convertToDTO(userHistory.getBodyTypes()))
                 .caloriesEaten(userHistory.getCaloriesEaten())
                 .caloriesSchedule(userHistory.getCaloriesSchedule())
                 .carbohydratesEaten(userHistory.getCarbohydratesEaten())
@@ -93,12 +105,12 @@ public class UserHistoryService {
                 .fatSchedule(userHistory.getFatSchedule())
                 .gigajouleEaten(userHistory.getGigajouleEaten())
                 .gigajouleSchedule(userHistory.getGigajouleSchedule())
-//                .mealDTO(userHistory.getMeals())
+                .mealDTO(userHistory.getMeals().stream().map(this::convertToDTO).collect(Collectors.toList()))
                 .proteinEaten(userHistory.getProteinEaten())
                 .proteinSchedule(userHistory.getProteinSchedule())
-//                .targetDTO(userHistory.getTargets())
-//                .typeOfMealDTO(userHistory.getTypeOfMeals())
-//                .userDTO(userHistory.getUsers())
+                .targetDTO(this.convertToDTO(userHistory.getTargets()))
+                .typeOfMealDTO(this.convertToDTO(userHistory.getTypeOfMeals()))
+                .userDTO(this.convertToDTO(userHistory.getUsers()))
                 .weight(userHistory.getWeight())
                 .build();
     }
@@ -108,7 +120,7 @@ public class UserHistoryService {
                 .id(userHistoryDTO.getId())
                 .alcoholEaten(userHistoryDTO.getAlcoholEaten())
                 .alcoholSchedule(userHistoryDTO.getAlcoholSchedule())
-//                .bodyTypes(userHistoryDTO.getBodyTypeDTO())
+                .bodyTypes(this.convertFromDTO(userHistoryDTO.getBodyTypeDTO()))
                 .caloriesEaten(userHistoryDTO.getCaloriesEaten())
                 .caloriesSchedule(userHistoryDTO.getCaloriesSchedule())
                 .carbohydratesEaten(userHistoryDTO.getCarbohydratesEaten())
@@ -118,13 +130,127 @@ public class UserHistoryService {
                 .fatSchedule(userHistoryDTO.getFatSchedule())
                 .gigajouleEaten(userHistoryDTO.getGigajouleEaten())
                 .gigajouleSchedule(userHistoryDTO.getGigajouleSchedule())
-//                .meals(userHistoryDTO.getMealDTO())
+                .meals(userHistoryDTO.getMealDTO().stream().map(this::convertFromDTO).collect(Collectors.toList()))
                 .proteinEaten(userHistoryDTO.getProteinEaten())
                 .proteinSchedule(userHistoryDTO.getProteinSchedule())
-//                .targets(userHistoryDTO.getTargetDTO())
-//                .typeOfMeals(userHistoryDTO.getTypeOfMealDTO())
-//                .users(userHistoryDTO.getUserDTO())
+                .targets(this.convertFromDTO(userHistoryDTO.getTargetDTO()))
+                .typeOfMeals(this.convertFromDTO(userHistoryDTO.getTypeOfMealDTO()))
+                .users(this.convertFromDTO(userHistoryDTO.getUserDTO()))
                 .weight(userHistoryDTO.getWeight())
+                .build();
+    }
+
+    private BodyTypeDTO convertToDTO(BodyType bodyType) {
+        return BodyTypeDTO.builder()
+                .id(bodyType.getId())
+                .typeOfBody(bodyType.getTypeOfBody())
+                .build();
+    }
+
+    private BodyType convertFromDTO(BodyTypeDTO bodyTypeDTO) {
+        return BodyType.builder()
+                .id(bodyTypeDTO.getId())
+                .typeOfBody(bodyTypeDTO.getTypeOfBody())
+                .build();
+    }
+
+    private MealDTO convertToDTO(Meal meal) {
+        return MealDTO.builder()
+                .id(meal.getId())
+                .mealName(meal.getMealName())
+                .productDTO(meal.getProducts().stream().map(this::convertToDTO).collect(Collectors.toList()))
+                .build();
+    }
+
+    private Meal convertFromDTO(MealDTO mealDTO) {
+        return Meal.builder()
+                .id(mealDTO.getId())
+                .mealName(mealDTO.getMealName())
+                .products(mealDTO.getProductDTO().stream().map(this::convertFromDTO).collect(Collectors.toList()))
+                .build();
+    }
+
+    private ProductDTO convertToDTO(Product product) {
+        return ProductDTO.builder()
+                .id(product.getId())
+                .name(product.getName())
+                .alcohol(product.getAlcohol())
+                .calories(product.getCalories())
+                .carbohydrates(product.getCarbohydrates())
+                .fat(product.getFat())
+                .gigajoule(product.getGigajoule())
+                .protein(product.getProtein())
+                .build();
+    }
+
+    private Product convertFromDTO(ProductDTO productDTO) {
+        return Product.builder()
+                .id(productDTO.getId())
+                .name(productDTO.getName())
+                .alcohol(productDTO.getAlcohol())
+                .calories(productDTO.getCalories())
+                .carbohydrates(productDTO.getCarbohydrates())
+                .fat(productDTO.getFat())
+                .gigajoule(productDTO.getGigajoule())
+                .protein(productDTO.getProtein())
+                .build();
+    }
+
+    private TargetDTO convertToDTO(Target target) {
+        return TargetDTO.builder()
+                .id(target.getId())
+                .futureTarget(target.getFutureTarget())
+                .build();
+    }
+
+    private Target convertFromDTO(TargetDTO targetDTO) {
+        return Target.builder()
+                .id(targetDTO.getId())
+                .futureTarget(targetDTO.getFutureTarget())
+                .build();
+    }
+
+    private TypeOfMealDTO convertToDTO(TypeOfMeal typeOfMeal) {
+        return TypeOfMealDTO.builder()
+                .id(typeOfMeal.getId())
+                .typeMeals(typeOfMeal.getTypeMeals())
+                .build();
+    }
+
+    private TypeOfMeal convertFromDTO(TypeOfMealDTO typeOfMealDTO) {
+        return TypeOfMeal.builder()
+                .id(typeOfMealDTO.getId())
+                .typeMeals(typeOfMealDTO.getTypeMeals())
+                .build();
+    }
+
+    private UserDTO convertToDTO(User user) {
+        return UserDTO.builder()
+                .id(user.getId())
+                .email(user.getEmail())
+                .firstName(user.getFirstName())
+                .lastName(user.getLastName())
+                .height(user.getHeight())
+                .age(user.getAge())
+                .password(user.getPassword())
+                .sex(user.getSex())
+                .weight(user.getWeight())
+                .bodyTypeDTO(this.convertToDTO(BodyType.builder().build()))
+                .build();
+    }
+
+    private User convertFromDTO(UserDTO userDTO) {
+        return User.builder()
+                .id(userDTO.getId())
+                .email(userDTO.getEmail())
+                .firstName(userDTO.getFirstName())
+                .lastName(userDTO.getLastName())
+                .height(userDTO.getHeight())
+                .age(userDTO.getAge())
+                .password(userDTO.getPassword())
+                .sex(userDTO.getSex())
+                .weight(userDTO.getWeight())
+                .bodyType(this.convertFromDTO(BodyTypeDTO.builder().build()))
                 .build();
     }
 }

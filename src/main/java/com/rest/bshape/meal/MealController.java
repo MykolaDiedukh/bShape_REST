@@ -9,7 +9,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/meal")
 @CrossOrigin(origins = "http://localhost:4200")
-public class MealController {
+class MealController {
 
     private final MealService mealService;
 

@@ -86,7 +86,7 @@ class UserService {
                 .password(user.getPassword())
                 .sex(user.getSex())
                 .weight(user.getWeight())
-                .bodyTypeDTO(user.getBodyType())
+                .bodyTypeDTO(this.convertToDTO(BodyType.builder().build()))
                 .build();
     }
 
@@ -101,7 +101,7 @@ class UserService {
                 .password(userDTO.getPassword())
                 .sex(userDTO.getSex())
                 .weight(userDTO.getWeight())
-                .bodyType(userDTO.getBodyTypeDTO().stream.map(this::convertFromDTO).c)
+                .bodyType(this.convertFromDTO(BodyTypeDTO.builder().build()))
                 .build();
     }
 
