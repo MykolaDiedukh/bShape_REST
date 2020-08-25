@@ -24,6 +24,7 @@ public class Product {
     @NotNull
     @Size(min = 3)
     private String name;
+    private Double weight;
     private Double gigajoule;
     private Double calories;
     private Double alcohol;
