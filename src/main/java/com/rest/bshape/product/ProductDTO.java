@@ -13,6 +13,7 @@ public class ProductDTO {
 
     private Long id;
     private String name;
+    private Double weight;
     private Double gigajoule;
     private Double calories;
     private Double alcohol;
