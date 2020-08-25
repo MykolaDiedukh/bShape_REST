@@ -9,7 +9,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/bodyType")
 @CrossOrigin(origins = "http://localhost:4200")
-public class BodyTypeController {
+class BodyTypeController {
 
     private final BodyTypeService bodyTypeService;
 
