@@ -69,6 +69,23 @@
             <version>5.4.19.Final</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2  BIBLIOTEKI SWAGERA DO DOKUMENTACJI RESTOWEGO API
+         + POZWALAJĄ NA TESTOWANIE RESTOWEGO API
+         -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>
@@ -79,6 +96,7 @@
             </plugin>
         </plugins>
     </build>
+
 
 
 </project>
