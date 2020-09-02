@@ -25,7 +25,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                         .stream()
                         .map(role -> new SimpleGrantedAuthority(role.getName()))
                         .collect(Collectors.toSet())))
-                .orElseThrow(() -> new UsernameNotFoundException(email));
+                        .orElseThrow(() -> new UsernameNotFoundException(email));
     }
 
 
