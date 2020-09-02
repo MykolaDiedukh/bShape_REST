@@ -13,7 +13,6 @@ import com.rest.bshape.typeofmeal.TypeOfMeal;
 import com.rest.bshape.typeofmeal.TypeOfMealDTO;
 import com.rest.bshape.user.domain.User;
 import com.rest.bshape.user.UserDTO;
-import com.rest.bshape.user.UserHistoryRepository;
 import lombok.val;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
