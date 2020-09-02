@@ -8,6 +8,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.Set;
 
 @Entity
 @Setter
@@ -52,6 +53,9 @@ public class User {
 
     @OneToOne(fetch = FetchType.EAGER)
     private BodyType bodyType;
+
+    @ManyToMany/*(fetch = FetchType.EAGER)*/
+    private Set<Role> roles;
 
 }
 
