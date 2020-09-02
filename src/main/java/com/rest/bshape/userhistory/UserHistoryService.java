@@ -11,7 +11,7 @@ import com.rest.bshape.target.Target;
 import com.rest.bshape.target.TargetDTO;
 import com.rest.bshape.typeofmeal.TypeOfMeal;
 import com.rest.bshape.typeofmeal.TypeOfMealDTO;
-import com.rest.bshape.user.User;
+import com.rest.bshape.user.domain.User;
 import com.rest.bshape.user.UserDTO;
 import com.rest.bshape.user.UserHistoryRepository;
 import lombok.val;
