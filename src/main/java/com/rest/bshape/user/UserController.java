@@ -1,6 +1,7 @@
 package com.rest.bshape.user;
 
 import com.rest.bshape.exeption.ResourceNotFoundException;
+import com.rest.bshape.user.domain.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +30,7 @@ class UserController {
     }
 
     @PostMapping
-    public UserID create(@RequestBody UserDTO userDTO) {
+    public UserID createUser(@RequestBody UserDTO userDTO) {
         return userService.create(userDTO).orElseThrow(() -> new ResourceNotFoundException("User not created"));
     }
 
