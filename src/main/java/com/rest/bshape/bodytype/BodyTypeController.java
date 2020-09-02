@@ -16,7 +16,7 @@ class BodyTypeController {
     public BodyTypeController(BodyTypeService bodyTypeService) {
         this.bodyTypeService = bodyTypeService;
     }
-
+    
     @GetMapping
     public List<BodyTypeDTO> findAll() {
         return this.bodyTypeService.findAll();
