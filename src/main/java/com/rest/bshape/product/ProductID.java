@@ -1,8 +1,10 @@
 package com.rest.bshape.product;
 
-import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
 
-@AllArgsConstructor
+@Builder
+@Getter
 class ProductID {
     private final Long id;
 }

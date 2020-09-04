@@ -1,8 +1,10 @@
 package com.rest.bshape.meal;
 
-import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
 
-@AllArgsConstructor
+@Builder
+@Getter
 class MealID {
     private final Long id;
 }

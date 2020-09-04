@@ -52,7 +52,7 @@ class BodyTypeService {
         return Optional.of(this.convertToDTO(bodyTypeRepository.save(existingBodyType)));
     }
 
-    public ResponseEntity<BodyType> delete(Long id) {
+    public ResponseEntity<BodyTypeID> delete(Long id) {
         BodyType existingBodyType = this.bodyTypeRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("BodyType not found with id:" + id));
         this.bodyTypeRepository.delete(existingBodyType);

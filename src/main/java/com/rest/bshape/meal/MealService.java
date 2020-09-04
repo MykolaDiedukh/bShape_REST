@@ -53,7 +53,7 @@ class MealService {
         return Optional.of(this.convertToDTO(mealRepository.save(existingMeal)));
     }
 
-    public ResponseEntity<Meal> delete(Long id) {
+    public ResponseEntity<MealID> delete(Long id) {
         Meal existingMeal = this.mealRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id:" + id));
         this.mealRepository.delete(existingMeal);

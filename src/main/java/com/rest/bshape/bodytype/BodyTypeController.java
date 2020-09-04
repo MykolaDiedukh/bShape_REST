@@ -39,7 +39,7 @@ class BodyTypeController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<BodyType> delete(@PathVariable("id") Long id) {
+    public ResponseEntity<BodyTypeID> delete(@PathVariable("id") Long id) {
         return this.bodyTypeService.delete(id);
     }
 }

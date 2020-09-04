@@ -34,6 +34,7 @@ class UserService {
         return optionalUser.isEmpty() ? Optional.empty() : optionalUser.map(this::convertToDTO);
     }
 
+
     public Optional<UserID> create(UserDTO userDTO) {
         User user = this.convertFromDTO(userDTO);
 
@@ -61,7 +62,7 @@ class UserService {
         return Optional.of(this.convertToDTO(userRepository.save(existingUser)));
     }
 
-    public ResponseEntity<User> delete(Long id) {
+    public ResponseEntity<UserID> delete(Long id) {
         User existingUser = this.userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id:" + id));
         this.userRepository.delete(existingUser);
