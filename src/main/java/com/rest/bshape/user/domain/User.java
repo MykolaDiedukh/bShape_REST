@@ -4,10 +4,7 @@ import com.rest.bshape.bodytype.BodyType;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.util.Set;
 
 @Entity
@@ -45,10 +42,12 @@ public class User {
 
     @Email
     @NotNull
+
     @Size(min = 5, max = 30)
     private String email;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @Transient // ignoring this field when adding new 'User' to database. Probably causing mistake in future.
+    @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     private BodyType bodyType;
 
     @ManyToMany/*(fetch = FetchType.EAGER)*/

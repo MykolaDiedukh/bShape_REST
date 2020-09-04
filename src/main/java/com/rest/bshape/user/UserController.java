@@ -1,12 +1,12 @@
 package com.rest.bshape.user;
 
 import com.rest.bshape.exeption.ResourceNotFoundException;
-import com.rest.bshape.user.domain.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 
 @RestController
 @RequestMapping("/user")
@@ -29,6 +29,7 @@ class UserController {
         return userService.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found with id :" + id));
     }
 
+
     @PostMapping
     public UserID createUser(@RequestBody UserDTO userDTO) {
         return userService.create(userDTO).orElseThrow(() -> new ResourceNotFoundException("User not created"));
@@ -40,7 +41,7 @@ class UserController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<User> delete(@PathVariable("id") Long id) {
+    public ResponseEntity<UserID> delete(@PathVariable("id") Long id) {
         return this.userService.delete(id);
     }
 

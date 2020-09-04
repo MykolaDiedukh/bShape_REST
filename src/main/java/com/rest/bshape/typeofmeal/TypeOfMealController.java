@@ -39,7 +39,7 @@ public class TypeOfMealController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<TypeOfMeal> delete(@PathVariable("id") Long id) {
+    public ResponseEntity<TypeOfMealID> delete(@PathVariable("id") Long id) {
         return this.typeOfMealService.delete(id);
     }
 }

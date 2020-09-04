@@ -82,7 +82,7 @@ public class UserHistoryService {
         return Optional.of(this.convertToDTO(userHistoryRepository.save(existingUserHistory)));
     }
 
-    public ResponseEntity<UserHistory> delete(Long id) {
+    public ResponseEntity<UserHistoryID> delete(Long id) {
         UserHistory existingUserHistory = this.userHistoryRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("UserHistory not found with id:" + id));
         this.userHistoryRepository.delete(existingUserHistory);

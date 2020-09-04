@@ -58,7 +58,7 @@ class ProductService {
     }
 
 
-    public ResponseEntity<Product> delete(Long id) {
+    public ResponseEntity<ProductID> delete(Long id) {
         Product existingProduct = this.productRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Product not found with id:" + id));
         this.productRepository.delete(existingProduct);

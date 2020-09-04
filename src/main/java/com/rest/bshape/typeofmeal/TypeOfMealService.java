@@ -53,7 +53,7 @@ public class TypeOfMealService {
         return Optional.of(this.convertToDTO(typeOfMealRepository.save(existingTypeOfMeal)));
     }
 
-    public ResponseEntity<TypeOfMeal> delete(Long id) {
+    public ResponseEntity<TypeOfMealID> delete(Long id) {
         TypeOfMeal existingMeal = this.typeOfMealRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Type of meal was not found, with id: " + id));
         this.typeOfMealRepository.delete(existingMeal);

@@ -40,7 +40,7 @@ class TargetController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Target> delete(@PathVariable("id") Long id) {
+    public ResponseEntity<TargetID> delete(@PathVariable("id") Long id) {
         return this.targetService.delete(id);
     }
 }

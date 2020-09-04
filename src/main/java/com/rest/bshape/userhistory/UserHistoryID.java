@@ -1,8 +1,10 @@
 package com.rest.bshape.userhistory;
 
-import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
 
-@AllArgsConstructor
+@Builder
+@Getter
 public class UserHistoryID {
 
     private final Long id;

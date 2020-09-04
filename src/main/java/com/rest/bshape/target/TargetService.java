@@ -51,7 +51,7 @@ public class TargetService {
         return Optional.of(this.convertToDTO(targetRepository.save(existingTarget)));
     }
 
-    public ResponseEntity<Target> delete(Long id) {
+    public ResponseEntity<TargetID> delete(Long id) {
         Target existingTarget = this.targetRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Target not found with id:" + id));
         this.targetRepository.delete(existingTarget);
