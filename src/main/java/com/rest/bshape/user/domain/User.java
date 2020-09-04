@@ -30,13 +30,10 @@ public class User {
     @Size(min = 2)
     private String lastName;
 
-    @NotNull
     private Integer age;
 
-    @NotNull
     private Double weight;
 
-    @NotNull
     private Double height;
 
     @NotNull
