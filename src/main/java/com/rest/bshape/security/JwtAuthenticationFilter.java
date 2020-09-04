@@ -1,6 +1,8 @@
 package com.rest.bshape.security;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.impl.DefaultClaims;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
@@ -38,5 +40,12 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         claims.put("authorities", authResult.getAuthorities().stream()            /// pobrałem liste simpleAuhtority
                 .map(GrantedAuthority::getAuthority) // metoda referencyjna
                 .collect(joining(","))); // mapuje, pobieram auuthority i colectuje łącząc przy pomocy joning.
+
+
+        String token = Jwts.builder()
+                .setClaims(claims)  // setuje claimsy
+                .signWith(SignatureAlgorithm.HS512, "mySecretKeyHehe")  // ustawiam sygnature haszowania + ustawiam klucz
+                .compact(); // tworze token
+
     }
 }
