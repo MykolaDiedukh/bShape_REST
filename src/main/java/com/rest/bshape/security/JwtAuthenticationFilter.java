@@ -1,5 +1,6 @@
 package com.rest.bshape.security;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -15,6 +16,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.Date;
 
 import static java.util.stream.Collectors.joining;
@@ -46,6 +48,9 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .setClaims(claims)  // setuje claimsy
                 .signWith(SignatureAlgorithm.HS512, "mySecretKeyHehe")  // ustawiam sygnature haszowania + ustawiam klucz
                 .compact(); // tworze token
+
+        // wykorzystuje Singletonowa mape, oraz ObjectMapper ktora parsuje i rozparosowywuje Jsony,  parujsemy mape na jsona tworze mape z jednym wpisem.
+        new ObjectMapper().writeValue(response.getWriter(), Collections.singletonMap("token", token));
 
     }
 }
