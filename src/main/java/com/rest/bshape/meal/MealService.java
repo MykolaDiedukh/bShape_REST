@@ -35,7 +35,6 @@ class MealService {
 
     public Optional<MealID> create(MealDTO mealDTO) {
         Meal meal = this.convertFromDTO(mealDTO);
-
         Meal createdMeal = mealRepository.save(meal);
         val mealID = new MealID(createdMeal.getId());
         return Optional.of(mealID);
@@ -50,6 +49,7 @@ class MealService {
         }
         Meal existingMeal = mealById.get();
         existingMeal.setMealName(meal.getMealName());
+        existingMeal.setProducts(meal.getProducts());
         return Optional.of(this.convertToDTO(mealRepository.save(existingMeal)));
     }
 
@@ -64,7 +64,7 @@ class MealService {
         return MealDTO.builder()
                 .id(meal.getId())
                 .mealName(meal.getMealName())
-                .productDTO(meal.getProducts().stream().map(this::convertToDTO).collect(Collectors.toList()))
+//                .productDTO(meal.getProducts().stream().map(this::convertToDTO).collect(Collectors.toList()))
                 .build();
     }
 
@@ -72,7 +72,7 @@ class MealService {
         return Meal.builder()
                 .id(mealDTO.getId())
                 .mealName(mealDTO.getMealName())
-                .products(mealDTO.getProductDTO().stream().map(this::convertFromDTO).collect(Collectors.toList()))
+//                .products(mealDTO.getProductDTO().stream().map(this::convertFromDTO).collect(Collectors.toList()))
                 .build();
     }
 
