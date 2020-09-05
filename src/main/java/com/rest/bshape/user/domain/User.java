@@ -46,7 +46,7 @@ public class User {
     @Size(min = 5, max = 30)
     private String email;
 
-    @Transient // ignoring this field when adding new 'User' to database. Probably causing mistake in future.
+//    @Transient // ignoring this field when adding new 'User' to database. Probably causing mistake in future.
     @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     private BodyType bodyType;
 

@@ -22,7 +22,6 @@ public class Meal {
     @NotEmpty
     private String mealName;
 
-    @Transient
     @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     private List<Product> products;
 }

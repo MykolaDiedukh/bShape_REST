@@ -40,19 +40,14 @@ public class UserHistory {
     private Double proteinEaten;
     private Double proteinSchedule;
 
-    @Transient
     @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     private List<Meal> meals;
-    @Transient
     @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     private User users;
-    @Transient
     @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     private BodyType bodyTypes;
-    @Transient
     @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     private TypeOfMeal typeOfMeals;
-    @Transient
     @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     private Target targets;
 

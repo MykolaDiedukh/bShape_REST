@@ -37,7 +37,6 @@ class UserService {
 
     public Optional<UserID> create(UserDTO userDTO) {
         User user = this.convertFromDTO(userDTO);
-
         User createdUser = userRepository.save(user);
         val userID = new UserID(createdUser.getId());
         return Optional.of(userID);
@@ -59,6 +58,7 @@ class UserService {
         existingUser.setSex(user.getSex());
         existingUser.setPassword(user.getPassword());
         existingUser.setEmail(user.getEmail());
+        existingUser.setBodyType(user.getBodyType());
         return Optional.of(this.convertToDTO(userRepository.save(existingUser)));
     }
 
@@ -87,7 +87,7 @@ class UserService {
                 .password(user.getPassword())
                 .sex(user.getSex())
                 .weight(user.getWeight())
-                .bodyTypeDTO(this.convertToDTO(BodyType.builder().build()))
+//                .bodyTypeDTO(this.convertToDTO(BodyType.builder().build()))
                 .build();
     }
 
@@ -102,7 +102,7 @@ class UserService {
                 .password(userDTO.getPassword())
                 .sex(userDTO.getSex())
                 .weight(userDTO.getWeight())
-                .bodyType(this.convertFromDTO(BodyTypeDTO.builder().build()))
+//                .bodyType(this.convertFromDTO(BodyTypeDTO.builder().build()))
                 .build();
     }
 
