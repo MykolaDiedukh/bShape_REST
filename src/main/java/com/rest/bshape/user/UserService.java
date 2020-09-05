@@ -2,7 +2,7 @@ package com.rest.bshape.user;
 
 import com.rest.bshape.bodytype.BodyType;
 import com.rest.bshape.bodytype.BodyTypeDTO;
-import com.rest.bshape.exeption.ResourceNotFoundException;
+import com.rest.bshape.exception.ResourceNotFoundException;
 import com.rest.bshape.user.domain.User;
 import lombok.val;
 import org.springframework.http.ResponseEntity;

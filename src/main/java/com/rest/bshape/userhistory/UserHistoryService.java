@@ -2,7 +2,7 @@ package com.rest.bshape.userhistory;
 
 import com.rest.bshape.bodytype.BodyType;
 import com.rest.bshape.bodytype.BodyTypeDTO;
-import com.rest.bshape.exeption.ResourceNotFoundException;
+import com.rest.bshape.exception.ResourceNotFoundException;
 import com.rest.bshape.meal.Meal;
 import com.rest.bshape.meal.MealDTO;
 import com.rest.bshape.product.Product;

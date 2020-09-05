@@ -1,4 +1,4 @@
-package com.rest.bshape.exeption;
+package com.rest.bshape.exception;
 
 import java.util.Date;
 

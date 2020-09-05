@@ -1,6 +1,6 @@
 package com.rest.bshape.user;
 
-import com.rest.bshape.exeption.ResourceNotFoundException;
+import com.rest.bshape.exception.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

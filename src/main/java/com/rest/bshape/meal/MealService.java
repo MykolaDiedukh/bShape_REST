@@ -1,6 +1,6 @@
 package com.rest.bshape.meal;
 
-import com.rest.bshape.exeption.ResourceNotFoundException;
+import com.rest.bshape.exception.ResourceNotFoundException;
 import com.rest.bshape.product.Product;
 import com.rest.bshape.product.ProductDTO;
 import lombok.val;
