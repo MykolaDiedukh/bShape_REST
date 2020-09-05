@@ -8,10 +8,11 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
-@Data // generuje gettery, settery equals i hascody
+@Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode(of="id")
 public class Role {
 
     @Id

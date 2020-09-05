@@ -1,6 +1,6 @@
 package com.rest.bshape.target;
 
-import com.rest.bshape.exeption.ResourceNotFoundException;
+import com.rest.bshape.exception.ResourceNotFoundException;
 import lombok.val;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
