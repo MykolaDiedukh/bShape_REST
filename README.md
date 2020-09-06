@@ -1,8 +1,16 @@
-# bShape_REST
-REST for bShape Aplication
+## Hello There, Im Krystian Kluczkiewicz here below You will find some informations Bshape_Rest Aplication! 👋
+#### Project made with colaboration with Mykola Diedukh https://github.com/MykolaDiedukh
 
-## How to use
-Run AppInitializer for starting spring boot rest server
+
+## About Aplication:
+#### - We have created a rest server to communicate with the Angular Project.
+#### - We used Swagger for communication between two projects.
+#### - We implemented a Spring Security token to maintain basic Security for Our Users.
+#### - The server communicates with the View Project created in Angular and with the database.
+
+
+## How to use?
+### Run AppInitializer to start spring boot rest server.
 
 ### Commands for bodyType:
  1. http://localhost:8090/bodyType/ -return all bodyType, request GET
@@ -42,7 +50,7 @@ Run AppInitializer for starting spring boot rest server
 ### Commands for user:
  1. http://localhost:8090/user/ -return all user, request GET
  2. http://localhost:8090/user/i -return user with index "i", request GET
- 3. http://localhost:8090/user/ -create user, request POST
+ 3. http://localhost:8090/user/ -create user, request POST, register user
  4. http://localhost:8090/user/i -update user  with index "i", request PUT
  5. http://localhost:8090/user/i -dalete user  with index "i", request DELETE
  6. http://localhost:8090/user/login -check if have user by email and password
@@ -53,3 +61,15 @@ Run AppInitializer for starting spring boot rest server
  3. http://localhost:8090/userHistory/ -create userHistory, request POST
  4. http://localhost:8090/userHistory/i -update userHistory  with index "i", request PUT
  5. http://localhost:8090/userHistory/i -dalete userHistory  with index "i", request DELETE
+
+
+
+## Languages and Tools Used: 
+<img align="left" src="https://devicons.github.io/devicon/devicon.git/icons/java/java-original-wordmark.svg" alt="java" width="45"/>
+<img align="left" src="https://www.vectorlogo.zone/logos/springio/springio-icon.svg" alt="spring" width="45"/>
+<img align="left" src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="45"/>
+<img align="left" src="https://devicons.github.io/devicon/devicon.git/icons/mysql/mysql-original-wordmark.svg" alt="mysql" width="45"/> 
+<img align="left" src="https://avatars3.githubusercontent.com/u/348262?s=200&v=4" alt="mysql" width="45"/> 
+<img align="left" src="https://avatars2.githubusercontent.com/u/7658037?s=200&v=4" width="45"/> 
+
+
