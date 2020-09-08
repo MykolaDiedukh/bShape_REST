@@ -5,6 +5,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.impl.DefaultClaims;
+import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -48,9 +49,12 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .setClaims(claims)  // setuje claimsy
                 .signWith(SignatureAlgorithm.HS512, "mySecretKeyHehe")  // ustawiam sygnature haszowania + ustawiam klucz
                 .compact(); // tworze token
+        response.setContentType(MediaType.APPLICATION_JSON_VALUE);
 
         // wykorzystuje Singletonowa mape, oraz ObjectMapper ktora parsuje i rozparosowywuje Jsony,  parujsemy mape na jsona tworze mape z jednym wpisem.
         new ObjectMapper().writeValue(response.getWriter(), Collections.singletonMap("token", token));
+
+
 
     }
 }

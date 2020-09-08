@@ -20,6 +20,11 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 class UserService {
 
+    // Klasy wyzszego rzedu musza korzystac z abstrakcji wyzszego, Stowrzyc interfejs o nazwie user service z
+    // Naglowkami i klase w pakiecie IMPL ktora implementuje ten service. SOLID w controlerze uzywam interfejsu a nie jego implementacji
+    // w controlerze robie logie ktora powinna znalexc sie w serwisie
+    // powininem stworzyc Edvice Controller oznaczone adnotacja AdviceController i tam metody oznaczone adnotacjami exception handler i tam zwracac statusy.
+
     private final PasswordEncoder passwordEncoder;
 
 
