@@ -38,7 +38,6 @@ public class User {
     private Integer sex;
 
     @NotNull
-    @Size(min = 6)
     private String password;
 
     @Email

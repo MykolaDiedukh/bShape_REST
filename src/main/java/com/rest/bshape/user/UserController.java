@@ -45,6 +45,8 @@ class UserController {
         return this.userService.delete(id);
     }
 
+
+    // mozna usunac bo jest login juz spring security
     @PostMapping("/login")
     public ResponseEntity<UserDTO> getLogin(@RequestBody UserDTO userDTO) {
         return userService.getLogin(userDTO).isPresent() ? new ResponseEntity<>(HttpStatus.OK) : new ResponseEntity<>(HttpStatus.NOT_FOUND);
