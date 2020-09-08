@@ -3,9 +3,12 @@ package com.rest.bshape.user;
 import com.rest.bshape.bodytype.BodyType;
 import com.rest.bshape.bodytype.BodyTypeDTO;
 import com.rest.bshape.exception.ResourceNotFoundException;
+import com.rest.bshape.user.domain.RoleRepository;
 import com.rest.bshape.user.domain.User;
+import lombok.RequiredArgsConstructor;
 import lombok.val;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -14,13 +17,23 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 class UserService {
+
+    // Klasy wyzszego rzedu musza korzystac z abstrakcji wyzszego, Stowrzyc interfejs o nazwie user service z
+    // Naglowkami i klase w pakiecie IMPL ktora implementuje ten service. SOLID w controlerze uzywam interfejsu a nie jego implementacji
+    // w controlerze robie logie ktora powinna znalexc sie w serwisie
+    // powininem stworzyc Edvice Controller oznaczone adnotacja AdviceController i tam metody oznaczone adnotacjami exception handler i tam zwracac statusy.
+
+    private final PasswordEncoder passwordEncoder;
+
+
+    private final RoleRepository roleRepository;
+
 
     private final UserRepository userRepository;
 
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+
 
     public List<UserDTO> findAll() {
         List<User> optionalAllUser = this.userRepository.findAll();
@@ -34,9 +47,11 @@ class UserService {
         return optionalUser.isEmpty() ? Optional.empty() : optionalUser.map(this::convertToDTO);
     }
 
-
+    // zbędny Optional - w 41 inicializuje obiekt ktory nigdy nie bedzie nullem
     public Optional<UserID> create(UserDTO userDTO) {
         User user = this.convertFromDTO(userDTO);
+        user.setPassword(passwordEncoder.encode(user.getPassword())); // hash hasla
+        roleRepository.findByName("ROLE_USER").ifPresent(role -> user.setRoles(Collections.singleton(role))); // szuka roli po nazwie, jezeli jest to ja ustawia
         User createdUser = userRepository.save(user);
         val userID = new UserID(createdUser.getId());
         return Optional.of(userID);

@@ -3,8 +3,10 @@ package com.rest.bshape.security;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 import javax.servlet.FilterChain;
@@ -45,16 +47,22 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
         //tworze pusta liste
         List<GrantedAuthority> grantedAuthorityList = new ArrayList<>();
         //sprawdzam czy jest rozne od nula,jestli jest to ma role ktora wrzucam do listy
-        if(authorities!=null){
+        if (authorities != null) {
             // splituje strina po przecinku, wrzucam tablice do strumienia, mapuje i wrzucam do listy
-            grantedAuthorityList=Arrays.stream(authorities.split(","))
+            grantedAuthorityList = Arrays.stream(authorities.split(","))
                     .map(SimpleGrantedAuthority::new) // metoda referencyna
                     .collect(Collectors.toList());
         }
         String eMail = claims.getSubject();
 
         // napisanie ifa czy email istnieje jestli tak to wrzycenie do kontekstu security jestli nie to wrzucennie bledu
-        // rejestracja
+        if (eMail != null) {
+            UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(eMail, null, grantedAuthorityList);
+            SecurityContextHolder.getContext()
+                    .setAuthentication(usernamePasswordAuthenticationToken);
+        } else {
+            response.setStatus(401);
+        }
 
     }
 

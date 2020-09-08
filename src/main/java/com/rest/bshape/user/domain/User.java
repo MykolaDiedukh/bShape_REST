@@ -13,6 +13,7 @@ import java.util.Set;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode(of="id")
 public class User {
 
     @Id
@@ -37,7 +38,6 @@ public class User {
     private Integer sex;
 
     @NotNull
-    @Size(min = 6)
     private String password;
 
     @Email
