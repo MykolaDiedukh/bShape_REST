@@ -26,6 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
         // Wykorzystuje wzorzec Builder, pierwszą funckję wywołuje w tej samej
         // linijce co zmienna lub typ, a każda kolejna funkcja w nowej.
         http.csrf()
@@ -38,6 +39,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         // cały rest poiwnien byc bezstanowy czyli nie przechowywac info o poprzednich requestach
+
+
 
     }
 
