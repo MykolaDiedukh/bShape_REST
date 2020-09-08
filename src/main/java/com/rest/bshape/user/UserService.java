@@ -45,6 +45,8 @@ class UserService {
     // zbędny Optional - w 41 inicializuje obiekt ktory nigdy nie bedzie nullem
     public Optional<UserID> create(UserDTO userDTO) {
         User user = this.convertFromDTO(userDTO);
+        user.setPassword(passwordEncoder.encode(user.getPassword())); // hash hasla
+        roleRepository.findByName("ROLE_USER").ifPresent(role -> user.setRoles(Collections.singleton(role))); // szuka roli po nazwie, jezeli jest to ja ustawia
         User createdUser = userRepository.save(user);
         val userID = new UserID(createdUser.getId());
         return Optional.of(userID);
