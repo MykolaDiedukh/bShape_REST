@@ -1,5 +1,6 @@
 package com.rest.bshape.bodytype;
 
+import com.rest.bshape.bodytype.converter.BodyTypeConverter;
 import com.rest.bshape.exception.ResourceNotFoundException;
 import lombok.val;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +10,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
+import static com.rest.bshape.bodytype.converter.BodyTypeConverter.convertFromDTO;
+import static com.rest.bshape.bodytype.converter.BodyTypeConverter.convertToDTO;
 
 @Service
 class BodyTypeService {
@@ -22,18 +26,18 @@ class BodyTypeService {
     public List<BodyTypeDTO> findAll() {
         List<BodyType> optionalAllBodyType = this.bodyTypeRepository.findAll();
         return optionalAllBodyType.isEmpty() ? Collections.emptyList() : optionalAllBodyType.stream()
-                .map(this::convertToDTO)
+                .map(BodyTypeConverter::convertToDTO)
                 .collect(Collectors.toList());
     }
 
     public Optional<BodyTypeDTO> findById(Long id) {
         Optional<BodyType> optionalBodyType = bodyTypeRepository.findById(id);
-        return optionalBodyType.isEmpty() ? Optional.empty() : optionalBodyType.map(this::convertToDTO);
+        return optionalBodyType.isEmpty() ? Optional.empty() : optionalBodyType.map(BodyTypeConverter::convertToDTO);
     }
 
 
     public Optional<BodyTypeID> create(BodyTypeDTO bodyTypeDTO) {
-        BodyType bodyType = this.convertFromDTO(bodyTypeDTO);
+        BodyType bodyType = convertFromDTO(bodyTypeDTO);
 
         BodyType createdBodyType = bodyTypeRepository.save(bodyType);
         val bodyTypeID = new BodyTypeID(createdBodyType.getId());
@@ -41,7 +45,7 @@ class BodyTypeService {
     }
 
     public Optional<BodyTypeDTO> update(BodyTypeDTO bodyTypeDTO, Long id) {
-        BodyType bodyType = this.convertFromDTO(bodyTypeDTO);
+        BodyType bodyType = convertFromDTO(bodyTypeDTO);
 
         Optional<BodyType> bodyTypeById = bodyTypeRepository.findById(id);
         if (bodyTypeById.isEmpty()) {
@@ -49,7 +53,7 @@ class BodyTypeService {
         }
         BodyType existingBodyType = bodyTypeById.get();
         existingBodyType.setTypeOfBody(bodyType.getTypeOfBody());
-        return Optional.of(this.convertToDTO(bodyTypeRepository.save(existingBodyType)));
+        return Optional.of(convertToDTO(bodyTypeRepository.save(existingBodyType)));
     }
 
     public ResponseEntity<BodyTypeID> delete(Long id) {
@@ -59,17 +63,4 @@ class BodyTypeService {
         return ResponseEntity.ok().build();
     }
 
-    private BodyTypeDTO convertToDTO(BodyType bodyType) {
-        return BodyTypeDTO.builder()
-                .id(bodyType.getId())
-                .typeOfBody(bodyType.getTypeOfBody())
-                .build();
-    }
-
-    private BodyType convertFromDTO(BodyTypeDTO bodyTypeDTO) {
-        return BodyType.builder()
-                .id(bodyTypeDTO.getId())
-                .typeOfBody(bodyTypeDTO.getTypeOfBody())
-                .build();
-    }
 }
