@@ -16,7 +16,7 @@ import java.util.Objects;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(of="id")
+@EqualsAndHashCode(of="id") // kwestia ID
 public class BodyType {
 
     @Id

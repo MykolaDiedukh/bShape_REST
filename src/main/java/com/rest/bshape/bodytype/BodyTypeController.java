@@ -22,9 +22,11 @@ class BodyTypeController {
         return this.bodyTypeService.findAll();
     }
 
+
     @GetMapping("/{id}")
     public BodyTypeDTO findById(@PathVariable(value = "id") Long id) {
-        return bodyTypeService.findById(id).orElseThrow(() -> new ResourceNotFoundException("BodyType not found with id :" + id));
+        return bodyTypeService.findById(id);
+
     }
 
     @PostMapping

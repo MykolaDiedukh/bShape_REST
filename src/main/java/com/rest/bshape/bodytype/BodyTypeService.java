@@ -6,6 +6,7 @@ import lombok.val;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -30,9 +31,10 @@ class BodyTypeService {
                 .collect(Collectors.toList());
     }
 
-    public Optional<BodyTypeDTO> findById(Long id) {
-        Optional<BodyType> optionalBodyType = bodyTypeRepository.findById(id);
-        return optionalBodyType.isEmpty() ? Optional.empty() : optionalBodyType.map(BodyTypeConverter::convertToDTO);
+    public BodyTypeDTO findById(Long id) {
+        return bodyTypeRepository.findById(id)
+                .map(BodyTypeConverter::convertToDTO)
+                .orElseThrow(() -> new EntityNotFoundException("BodyType not found with id :" + id));
     }
 
 
