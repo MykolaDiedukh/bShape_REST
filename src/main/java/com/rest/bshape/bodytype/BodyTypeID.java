@@ -6,7 +6,8 @@ import lombok.Getter;
 
 @Builder
 @Getter
-class BodyTypeID {
+@AllArgsConstructor
+public class BodyTypeID {
 
     private final Long id;
 

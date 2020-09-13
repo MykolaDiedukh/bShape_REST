@@ -1,5 +1,6 @@
 package com.rest.bshape.bodytype;
 
+import com.rest.bshape.bodytype.impl.BodyTypeServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -9,13 +10,13 @@ import java.util.Optional;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 
-class BodyTypeServiceTest {
+class BodyTypeServiceImplTest {
 
     @Mock
     private BodyTypeRepository bodyTypeRepository;
 
     @InjectMocks
-    private BodyTypeService bodyTypeService;
+    private BodyTypeServiceImpl bodyTypeServiceImpl;
 
 
     @Test
@@ -31,7 +32,7 @@ class BodyTypeServiceTest {
 
 
         //when
-        Optional<BodyTypeDTO> typeDTO = bodyTypeService.update(bodyTypeDTO, id);
+        /*Optional<BodyTypeDTO> typeDTO = bodyTypeService.update(bodyTypeDTO, id);*/
 
         //then
 
