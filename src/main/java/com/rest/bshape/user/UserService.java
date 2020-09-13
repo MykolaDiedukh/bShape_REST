@@ -35,6 +35,7 @@ class UserService {
 
 
 
+
     public List<UserDTO> findAll() {
         List<User> optionalAllUser = this.userRepository.findAll();
         return optionalAllUser.isEmpty() ? Collections.emptyList() : optionalAllUser.stream()
@@ -91,6 +92,7 @@ class UserService {
         return userByEmailAndPassword.map(this::convertToDTO);
     }
 
+    // converty wydzielic do osobnego pakietu i klasy Converter - jedna klasa ma jedna odpowiedzalnosc
     private UserDTO convertToDTO(User user) {
         return UserDTO.builder()
                 .id(user.getId())
