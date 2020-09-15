@@ -1,4 +1,4 @@
-package com.rest.bshape.bodytype;
+package com.rest.bshape.bodytype.domain;
 
 import lombok.*;
 

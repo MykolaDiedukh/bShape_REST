@@ -1,16 +1,19 @@
 package com.rest.bshape.bodytype;
 
 
+import com.rest.bshape.bodytype.domain.BodyType;
+import com.rest.bshape.bodytype.domain.BodyTypeID;
+
 import java.util.List;
 
 public interface BodyTypeService {
-     List<BodyTypeDTO> findAll();
+     List<BodyType> findAll();
 
-     BodyTypeDTO findById(Long id);
+     BodyType findById(Long id);
 
-     BodyTypeID create(BodyTypeDTO bodyTypeDTO);
+     BodyTypeID create(BodyType bodyType); // sprawdzić //
 
-     BodyTypeDTO update(BodyTypeDTO bodyTypeDTO, Long id);
+     BodyType update(BodyType bodyType, Long id);
 
      void delete(Long id);
 

@@ -1,6 +1,6 @@
 package com.rest.bshape.bodytype;
 
-import com.rest.bshape.bodytype.impl.BodyTypeServiceImpl;
+import com.rest.bshape.bodytype.domain.BodyTypeDTO;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -16,7 +16,7 @@ class BodyTypeServiceImplTest {
     private BodyTypeRepository bodyTypeRepository;
 
     @InjectMocks
-    private BodyTypeServiceImpl bodyTypeServiceImpl;
+    private BodyTypeService bodyTypeService;
 
 
     @Test
