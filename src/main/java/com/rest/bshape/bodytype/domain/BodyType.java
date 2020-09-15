@@ -1,4 +1,4 @@
-package com.rest.bshape.bodytype;
+package com.rest.bshape.bodytype.domain;
 
 import lombok.*;
 
@@ -9,14 +9,14 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Objects;
-
+// mogę uzyc @Data zmiast, setter getter equals i hascode
 @Entity
 @Setter
 @Getter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(of="id")
+@EqualsAndHashCode(of="id") // kwestia ID
 public class BodyType {
 
     @Id

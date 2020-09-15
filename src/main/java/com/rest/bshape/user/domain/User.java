@@ -1,6 +1,6 @@
 package com.rest.bshape.user.domain;
 
-import com.rest.bshape.bodytype.BodyType;
+import com.rest.bshape.bodytype.domain.BodyType;
 import lombok.*;
 
 import javax.persistence.*;

@@ -1,6 +1,6 @@
 package com.rest.bshape.userhistory;
 
-import com.rest.bshape.bodytype.BodyTypeDTO;
+import com.rest.bshape.bodytype.domain.BodyTypeDTO;
 import com.rest.bshape.meal.MealDTO;
 import com.rest.bshape.target.TargetDTO;
 import com.rest.bshape.typeofmeal.TypeOfMealDTO;

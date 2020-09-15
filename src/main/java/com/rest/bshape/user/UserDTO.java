@@ -1,6 +1,6 @@
 package com.rest.bshape.user;
 
-import com.rest.bshape.bodytype.BodyTypeDTO;
+import com.rest.bshape.bodytype.domain.BodyTypeDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
