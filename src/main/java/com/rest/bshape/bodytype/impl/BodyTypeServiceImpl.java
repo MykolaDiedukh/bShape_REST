@@ -11,7 +11,7 @@ import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 @Service
-class BodyTypeServiceImpl implements BodyTypeService {
+public class BodyTypeServiceImpl implements BodyTypeService {
 
     private final BodyTypeRepository bodyTypeRepository;
 

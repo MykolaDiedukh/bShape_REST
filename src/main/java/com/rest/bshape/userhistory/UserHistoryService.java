@@ -1,5 +1,6 @@
 package com.rest.bshape.userhistory;
 
+import com.rest.bshape.bodytype.domain.BodyType;
 import com.rest.bshape.bodytype.domain.BodyTypeDTO;
 import com.rest.bshape.exception.ResourceNotFoundException;
 import com.rest.bshape.meal.Meal;
