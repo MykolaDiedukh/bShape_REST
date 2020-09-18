@@ -4,7 +4,6 @@ import com.rest.bshape.bodytype.BodyTypeRepository;
 import com.rest.bshape.bodytype.BodyTypeService;
 import com.rest.bshape.bodytype.domain.BodyType;
 import com.rest.bshape.bodytype.domain.BodyTypeID;
-import com.rest.bshape.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
