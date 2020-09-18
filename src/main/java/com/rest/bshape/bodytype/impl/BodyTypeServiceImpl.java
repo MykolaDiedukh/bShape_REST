@@ -4,7 +4,6 @@ import com.rest.bshape.bodytype.BodyTypeRepository;
 import com.rest.bshape.bodytype.BodyTypeService;
 import com.rest.bshape.bodytype.domain.BodyType;
 import com.rest.bshape.bodytype.domain.BodyTypeID;
-import com.rest.bshape.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
@@ -52,9 +51,16 @@ public class BodyTypeServiceImpl implements BodyTypeService {
     // usunalem defaultowa metode ze springa
     @Override
     public void delete(Long id) {
-        BodyType existingBodyType = this.bodyTypeRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("BodyType not found with id:" + id));
-        this.bodyTypeRepository.delete(existingBodyType);
+     /*   BodyType existingBodyType = this.bodyTypeRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("BodyType not found with id:" + id));*/
+        System.out.println("test");
+        this.bodyTypeRepository.deleteById(id);
     }
+
+ /*   @Override
+    public void delete(Long id) {
+        this.bodyTypeRepository.deleteById(id);
+    }
+*/
 
 }
