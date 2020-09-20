@@ -4,8 +4,12 @@ import com.rest.bshape.bodytype.domain.BodyType;
 import com.rest.bshape.bodytype.domain.BodyTypeDTO;
 import com.rest.bshape.bodytype.domain.BodyTypeID;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.util.Collections;
 import java.util.List;
 
 import static com.rest.bshape.bodytype.converter.BodyTypeConverter.*;
@@ -23,7 +27,7 @@ class BodyTypeController {
     @GetMapping
     public List<BodyTypeDTO> findAll() {
 
-        return mapToListDto (bodyTypeService.findAll());
+        return mapToListDto(bodyTypeService.findAll());
     }
 
 
@@ -34,18 +38,24 @@ class BodyTypeController {
     }
 
     @PostMapping
-    public BodyTypeID create(@RequestBody BodyTypeDTO bodyTypeDTO) {
+    public BodyTypeID create(@RequestBody @Valid BodyTypeDTO bodyTypeDTO) { //valid = włącza walidacje na klasie dto
         return bodyTypeService.create(convertFromDTO(bodyTypeDTO));
     }
 
 
     @PutMapping("/{id}")
     public BodyTypeDTO update(@RequestBody BodyTypeDTO bodyTypeDTO, @PathVariable Long id) {
-        return convertToDTO(bodyTypeService.update(convertFromDTO(bodyTypeDTO),id));
+        return convertToDTO(bodyTypeService.update(convertFromDTO(bodyTypeDTO), id));
     }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         bodyTypeService.delete(id);
     }
+
+   /* @GetMapping("/page")
+    public Page page(@RequestParam Integer page, @RequestParam Integer size) {
+        return new PageImpl(Collections.emptyList());
+    }*/
+
 }
