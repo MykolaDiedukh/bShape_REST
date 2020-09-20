@@ -8,6 +8,8 @@
 #### - We used Swagger for communication between two projects.
 #### - We implemented a Spring Security token to maintain basic Security for Our Users.
 #### - The server communicates with the View Project created in Angular and with the database.
+#### - We implemented Integration tests & unit tests (Using  Mokckito, junit, AssertJ, MockMVC)
+
 
 
 ## How to use?
