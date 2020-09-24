@@ -3,7 +3,7 @@
 
 ````
 - Server developed in collaboration with Mykola Diedukh
-- Current development status of the application on the branch calleddevelop
+- Current development status of the application on the branch called develop
 - The server communicates with the View Project created in Angular and with the database.
 - We have created a rest server to communicate with our Angular Project.
 - We have implemented Exception Handling to capture exceptions.
