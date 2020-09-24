@@ -42,21 +42,17 @@
 
 ## Swagger Docs:
 
-![Screenshot](readme-img/startowa.png)
+![Screenshot](swagger1.png)
 ````
 ````
-![Screenshot](readme-img/przepisy.png)
+![Screenshot](swagger2.png)
 ````
 ````
-![Screenshot](readme-img/plany.png)
+![Screenshot](swagger3.png)
 ````
 ````
-![Screenshot](readme-img/dataEdit.png)
+![Screenshot](dto.png)
 ````
 ````
-![Screenshot](readme-img/passwordedit.png)
-````
-````
-![Screenshot](readme-img/all.png)
 
 
