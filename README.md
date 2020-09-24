@@ -54,8 +54,17 @@
 ![Screenshot](dto.png)
 ````
 ````
-## Registration & Login with JJWT TOKEN:
+## Registration & Login with JJWT token:
 
+![Screenshot](registration1.png)
+````
+````
+![Screenshot](registration2.png)
+````
+````
+![Screenshot](registration3.png)
+````
+````
 
 
 
